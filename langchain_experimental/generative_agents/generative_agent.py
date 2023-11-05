@@ -5,8 +5,8 @@ from typing import Any, Dict, List, Optional, Tuple
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from langchain.schema.language_model import BaseLanguageModel
-import memory 
-# from langchain_experimental.generative_agents.memory import GenerativeAgentMemory
+
+from langchain_experimental.generative_agents.memory import GenerativeAgentMemory
 from langchain_experimental.pydantic_v1 import BaseModel, Field
 
 
@@ -25,7 +25,7 @@ class GenerativeAgent(BaseModel):
     """Agents current education_and_work"""
     interests: str
     """What the agent is interested in"""
-    memory: memory.GenerativeAgentMemory
+    memory: GenerativeAgentMemory
     """The memory object that combines relevance, recency, and 'importance'."""
     llm: BaseLanguageModel
     """The underlying language model."""
