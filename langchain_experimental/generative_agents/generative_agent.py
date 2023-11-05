@@ -241,7 +241,7 @@ Relevant context:
             + "\nSummary of relevant context from {agent_name}'s memory:"
             + "\n{relevant_memories}"
             # + "\nMost recent observations: {most_recent_memories}"
-            +"\n Use the following information to generate a response from {agent_name}'s perspective. Anwser the question and only anwser from {agent_name}'s perspective. Do not include anything about being an AI model. "
+            +"\n Use the following information to generate a response from {agent_name}'s perspective. Anwser the question and only anwser from {agent_name}'s perspective. Do not include anything about being an AI model. If the given information is not relevant refer a response {agent_name} would likley say based om the memories."
             + "\nThe questions being asked: {question}"
             + "\n\n"
             # + suffix
