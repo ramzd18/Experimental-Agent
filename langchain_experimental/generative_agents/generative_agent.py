@@ -333,7 +333,8 @@ Relevant context:
             "Given this generate an extensive list of insights {name} would have based on reading these articles. Write the insights from the perspective of {name} and only include {name}'s personal insights and how they relate to his information. Seperate them with a ;"
         )
             result =self.memory.chain(prompt).run(product=prodcut,observation_str=observation_str,name=self.name,social_str=social_mem,summary=self.education_and_work+" Interests: "+self.interests,personality=self.memory.personalitylist)
-            self.memory.add_memories(result)
+            for memory in result: 
+                self.memory.add_memory(memory)
             print(result)
             lowerbounds=upperbounds
             upperbounds=upperbounds+iter

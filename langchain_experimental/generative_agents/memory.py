@@ -25,7 +25,7 @@ class GenerativeAgentMemory(BaseMemory):
     product_memory: TimeWeightedVectorStoreRetriever
     verbose: bool = False
     ### Changing reflection threshold to be 100 so agent stops and reflects after aggregate score of 120
-    reflection_threshold: Optional[float] = 500
+    reflection_threshold: Optional[float] = 1500
     """When aggregate_importance exceeds reflection_threshold, stop to reflect."""
     current_plan: List[str] = []
     """The current plan of the agent."""
