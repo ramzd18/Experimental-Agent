@@ -25,7 +25,7 @@ class GenerativeAgentMemory(BaseMemory):
     product_memory: TimeWeightedVectorStoreRetriever
     verbose: bool = False
     ### Changing reflection threshold to be 100 so agent stops and reflects after aggregate score of 120
-    reflection_threshold: Optional[float] = 1500.00
+    reflection_threshold = 1500.00
     """When aggregate_importance exceeds reflection_threshold, stop to reflect."""
     current_plan: List[str] = []
     """The current plan of the agent."""
@@ -38,7 +38,7 @@ class GenerativeAgentMemory(BaseMemory):
     Triggers reflection when it reaches reflection_threshold."""
     personalitylist: dict= {"extraversion": 0.0,"agreeableness":0.0, "openness":0.0, "conscientiousness":0.0,"neuroticism":0.0 }
 
-    max_tokens_limit: int = 1500  # : :meta private:
+    max_tokens_limit: int = 2000 # : :meta private:
     # input keys
     queries_key: str = "queries"
     most_recent_memories_token_key: str = "recent_memories_token"
@@ -225,6 +225,7 @@ class GenerativeAgentMemory(BaseMemory):
             and not self.reflecting
         ):
             print(self.aggregate_importance)
+            print("Reflecting threshold here:"+str(self.reflection_threshold))
             self.reflecting = True
             self.pause_to_reflect(now=now)
             # Hack to clear the importance from reflection
