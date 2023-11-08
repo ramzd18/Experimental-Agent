@@ -302,23 +302,27 @@ Relevant context:
          return memories
     def product_to_memory(self, prodcut):
         total=len(self.memory.product_memory.vectorstore.index_to_docstore_id)
+        print("Total Value is +"+str(total))
         iter=total/6
         
         lowerbounds=0
         upperbounds=lowerbounds+iter
         if(total<6 ):
-            upperbounds=total-1
+            upperbounds=lowerbounds+1
             iter=2
 
-        
+        print("lowerbound"+str(lowerbounds)+"Upperbound"+str(upperbounds))
         documentstr=""; 
         social_mem=self.memory.fetch_socialmedia_memories(prodcut)
+        print("Social Memmories: "+str(social_mem))
         while upperbounds<total:
             print("product memorying")
             memorystream= self.memory.product_memory.memory_stream[lowerbounds:upperbounds]
             observation_str = "\n".join(
             [self.memory._format_memory_detail(o) for o in memorystream
              ])
+            
+            print("observation string is this:"+observation_str)
             prompt = PromptTemplate.from_template(
             "Here is a list of articles about {product}: "
             "---\n"
