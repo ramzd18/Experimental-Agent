@@ -25,7 +25,7 @@ class GenerativeAgentMemory(BaseMemory):
     product_memory: TimeWeightedVectorStoreRetriever
     verbose: bool = False
     ### Changing reflection threshold to be 100 so agent stops and reflects after aggregate score of 120
-    reflection_threshold: Optional[float] = 1500
+    reflection_threshold: Optional[float] = 1500.00
     """When aggregate_importance exceeds reflection_threshold, stop to reflect."""
     current_plan: List[str] = []
     """The current plan of the agent."""
@@ -179,11 +179,7 @@ class GenerativeAgentMemory(BaseMemory):
     ### its length 
         
     def _score_mediapost_importance(self,memory_content:str)->float: 
-        post_len= len(memory_content)
-        score= post_len/12 
-        if(score>10): return 10 
-        else : 
-            return int(score )
+       return 8
 
     def _score_memories_importance(self, memory_content: str) -> List[float]:
         """Score the absolute importance of the given memory."""
@@ -228,6 +224,7 @@ class GenerativeAgentMemory(BaseMemory):
             and self.aggregate_importance > self.reflection_threshold
             and not self.reflecting
         ):
+            print(self.aggregate_importance)
             self.reflecting = True
             self.pause_to_reflect(now=now)
             # Hack to clear the importance from reflection
