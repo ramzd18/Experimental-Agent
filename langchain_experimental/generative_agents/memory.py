@@ -82,7 +82,7 @@ class GenerativeAgentMemory(BaseMemory):
         prompt = PromptTemplate.from_template(
             " Relevant Memories: {observations}\n\n"
             "Given these relevant information from a person's memories, what are three relevant things you think they would search up to learn more about {product} \n"
-            "Infer things to search up even if the given if the relevant information is not relevant to {product}. Make sure the questions relate to {product} and are specific questions"
+            "Infer things to search up even if the given if the relevant information is not relevant to {product}. Make sure the questions relate to {product} and are specific questions about {product}"
             "Seperate each thing you want to learn with ;."
         )
         observations = self.fetch_socialmedia_memories(product)
@@ -90,8 +90,7 @@ class GenerativeAgentMemory(BaseMemory):
             [self._format_memory_detail(o) for o in observations]
         )
         result = self.chain(prompt).run(observations=observation_str,product=product)
-        result= self._parse_list(result)
-        result.pop(0)
+        result= result.split(";")
         return result
 
     def _get_insights_on_topic(
