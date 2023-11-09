@@ -334,10 +334,11 @@ Relevant context:
             # "---\n"
             # "Here is a summmary of Ram: {summary} \n"
             # "Here are Ram's personality traits: {personality} \n"
-            "Given this generate a list of insights {name} would have based on reading these articles. Write the insights from the perspective of {name} and only include {name}'s personal insights and how they relate to their information and current situation. Seperate them with a ;"
+            "Given this generate a list of insights {name} would have based on reading these articles. Write the insights from the perspective of {name} and only include {name}'s personal insights and how they relate to their information and current situation. Seperate the insights with a ;"
         )
             print("finished prompt")
             result =self.memory.chain(prompt).run(product=prodcut,observation_str=observation_str,name=self.name,social_str=social_mem,summary=self.education_and_work+" Interests: "+self.interests,personality=self.memory.personalitylist)
+            result=result.split(";")
             print("finished chain")
             for memory in result: 
                 print("adding mem now")
