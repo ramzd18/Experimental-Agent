@@ -81,7 +81,7 @@ class GenerativeAgentMemory(BaseMemory):
     def  search_prodct_questions(self, product, last_k: int = 25) -> List[str]:
         prompt = PromptTemplate.from_template(
             " Relevant Memories: {observations}\n\n"
-            "Given these relevant information from a person's memories, what are seven relevant things you think they would search up to learn more about {product} \n"
+            "Given these relevant information from a person's memories, what are three relevant things you think they would search up to learn more about {product} \n"
             "Infer things to search up even if the given if the relevant information is not relevant to {product}. Make sure the questions relate to {product} and are specific questions"
             "Seperate each thing you want to learn with ;."
         )
