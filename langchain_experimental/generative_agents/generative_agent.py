@@ -342,9 +342,10 @@ Relevant context:
             for memory in result: 
                 print("adding mem now")
                 self.memory.add_memory(memory)
-            print(result)
             lowerbounds=upperbounds
+            print("Lowerboubds"+str(lowerbounds))
             upperbounds=upperbounds+iter
+            print("Up"+str(upperbounds))
 
     ######################################################
     # Agent stateful' summary methods.                   #
