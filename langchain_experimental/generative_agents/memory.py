@@ -268,7 +268,7 @@ class GenerativeAgentMemory(BaseMemory):
                 "{memories}\n\n"
                 "Given the following information about the person return a list where you rate"
                 "the person's extraversion,agreeableness,openness to experience,conscientiousness, neuroticism  in that order"
-                "on a scale of -1 to 1 where 1 means they fully posses the trait and -1 means they do posses the trait at all \n"
+                "on a scale of -1 to 1 where 1 means they fully posses the trait and -1 means they do posses the trait at all. Only respond with numbers. \n"
                 "Seperate the list with semicolons. Here is an example output format .8 ; -.34; .23; -.54; .65")
             memories=self.social_media_memory.memory_stream[-last_k:]
             memories_str="\n".join(
