@@ -303,7 +303,7 @@ Relevant context:
     def product_to_memory(self, prodcut):
         total=len(self.memory.product_memory.vectorstore.index_to_docstore_id)
         print("Total Value is +"+str(total))
-        iter=total/6
+        iter=total//6
         
         lowerbounds=0
         upperbounds=lowerbounds+iter
