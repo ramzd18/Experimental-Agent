@@ -78,10 +78,11 @@ class GenerativeAgentMemory(BaseMemory):
         return self._parse_list(result)
     
 
-    def  search_prodct_questions(self, product, last_k: int = 25) -> List[str]:
+    def  search_prodct_questions(self, product,status,  last_k: int = 25) -> List[str]:
         prompt = PromptTemplate.from_template(
             " Relevant Memories: {observations}\n\n"
-            "Given these relevant information from a person's memories, what are three relevant things you think they would search up to learn more about {product} \n"
+            "Status:{status} \n"
+            "Given theis relevant information from a persons memories, what are three relevant things you think they would search up to learn more about {product} \n"
             "Infer things to search up even if the given if the relevant information is not relevant to {product}. Make sure the questions relate to {product} and are specific questions about {product}"
             "Seperate each thing you want to learn with ;."
         )
@@ -89,7 +90,7 @@ class GenerativeAgentMemory(BaseMemory):
         observation_str = "\n".join(
             [self._format_memory_detail(o) for o in observations]
         )
-        result = self.chain(prompt).run(observations=observation_str,product=product)
+        result = self.chain(prompt).run(observations=observation_str,status=status, product=product)
         result= result.split(";")
         return result
 

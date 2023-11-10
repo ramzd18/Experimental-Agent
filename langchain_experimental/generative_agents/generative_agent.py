@@ -236,8 +236,8 @@ Relevant context:
         prompt = PromptTemplate.from_template(
             "{agent_summary_description}"
             # + "\n{agent_name}'s status: {agent_status}"
-            +"\n Agents's major personalities traits:"
-            +"\n{personality}"
+            +"\n {agent_name}'s interests:"
+            +"\n{interests}"
             + "\nSummary of relevant context from {agent_name}'s memory:"
             + "\n{relevant_memories}"
             # + "\nMost recent observations: {most_recent_memories}"
@@ -257,14 +257,15 @@ Relevant context:
         kwargs: Dict[str, Any] = dict(
             agent_summary_description=self.education_and_work+ "    "+ self.interests,
             relevant_memories=relevant_memories_str,
-            personality=self.memory.personalitylist,
+            interests=self.interests,
             agent_name= self.name,
             question=question
 
             # agent_status=self.status,
         )
-        
-        return self.chain(prompt).run(**kwargs).strip()
+        result= self.chain(prompt).run(**kwargs).strip()
+        self.memory.add_memory(result)
+        return result
     
     # def daily_scheudle_memoreies(self, now:Optional[datetime]=None)-> str: 
     #     prompt=PromptTemplate.from_template(
@@ -327,17 +328,18 @@ Relevant context:
             "Here is a list of articles about {product}: "
             "---\n"
             "{observation_str}\n"
-            # "---\n"
-            # "Here are a list of {name}'s relevent memories towards {product}  on social media:"
-            # "---\n"
-            # "{social_str}\n"
-            # "---\n"
-            # "Here is a summmary of Ram: {summary} \n"
-            # "Here are Ram's personality traits: {personality} \n"
+            "---\n"
+            "Here are a list of {name}'s relevent memories towards {product}  on social media:"
+            "---\n"
+            "{social_str}\n"
+            "---\n"
+            "Here is a summmary of {name}: {summary} \n"
+            "Here are {name}'s interests: {interests} \n"
+             "{name}'s current status: {status} \n"
             "Given this generate a list of insights {name} would have based on reading these articles. Write the insights from the perspective of {name} and only include {name}'s personal insights and how they relate to their information and current situation. Seperate the insights with a ;"
         )
             print("finished prompt")
-            result =self.memory.chain(prompt).run(product=prodcut,observation_str=observation_str,name=self.name,social_str=social_mem,summary=self.education_and_work+" Interests: "+self.interests,personality=self.memory.personalitylist)
+            result =self.memory.chain(prompt).run(product=prodcut,observation_str=observation_str,name=self.name,social_str=social_mem,summary=self.get_summary(),interests=self.interests,status=self.status)
             result=result.split(";")
             print("finished chain")
             for memory in result: 
