@@ -241,7 +241,7 @@ Relevant context:
             + "\nSummary of relevant context from {agent_name}'s memory:"
             + "\n{relevant_memories}"
             # + "\nMost recent observations: {most_recent_memories}"
-            +"\n Use the following information to generate a response from {agent_name}'s perspective. Anwser the question and only anwser from {agent_name}'s perspective and make it personalized response. Do not include anything about being an AI model. If the given information is not relevant refer a response {agent_name} would likley say based om the memories."
+            +"\n Use the following information to generate a response from {agent_name}'s perspective. Anwser the question and only anwser from {agent_name}'s perspective and make it personalized response. Do not include anything about being an AI model. Do not respond that you do not know. If the given information is not relevant refer a response {agent_name} would likley say based om the memories."
             + "\nThe questions being asked: {question}"
             + "\n\n"
             # + suffix
@@ -333,12 +333,13 @@ Relevant context:
             "---\n"
             "Here are {name}'s interests: {interests} \n"
              "{name}'s current status: {status} \n"
-            "Given this generate a list of insights {name} would have based on reading these articles. Write the insights from the perspective of {name} and only include {name}'s personal insights and how they relate to their information and current situation. Make sure they are personalized insights. Seperate the insights with a semicolon"
+            "Given this generate a list of insights {name} would have based on reading these articles. Write the insights from the perspective of {name} and only include {name}'s personal insights and how they relate to their information and current situation. Make sure they are personalized insights. Seperate the insights with a semicolon."
+            "Here is an example format  insight1; insight2;insight3;insight4;insight5;insight6 and so on"
         )
             print("finished prompt")
             result =self.memory.chain(prompt).run(product=prodcut,observation_str=observation_str,name=self.name,social_str=social_mem,summary=self.get_summary(),interests=self.interests,status=self.status)
             result=result.split(";")
-            print("finished chain")
+            print("finished chain"+len(result))
             for memory in result: 
                 print("adding mem now")
                 self.memory.add_memory(memory)
