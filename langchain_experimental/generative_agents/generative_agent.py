@@ -339,7 +339,7 @@ Relevant context:
             print("finished prompt")
             result =self.memory.chain(prompt).run(product=prodcut,observation_str=observation_str,name=self.name,social_str=social_mem,summary=self.get_summary(),interests=self.interests,status=self.status)
             result=result.split(";")
-            print("finished chain"+len(result))
+            print("finished chain"+ str(len(result)))
             for memory in result: 
                 print("adding mem now")
                 self.memory.add_memory(memory)
