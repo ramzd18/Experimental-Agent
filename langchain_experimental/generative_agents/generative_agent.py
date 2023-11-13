@@ -304,11 +304,11 @@ Relevant context:
     def product_to_memory(self, prodcut):
         total=len(self.memory.product_memory.vectorstore.index_to_docstore_id)
         print("Total Value is +"+str(total))
-        iter=total//6
+        iter=total//5
         
         lowerbounds=0
         upperbounds=lowerbounds+iter
-        if(total<6 ):
+        if(total<5):
             upperbounds=lowerbounds+1
             iter=2
 
@@ -326,17 +326,14 @@ Relevant context:
             print("observation string is this:"+observation_str)
             prompt = PromptTemplate.from_template(
             "Here is a list of articles about {product}: "
-            "---\n"
             "{observation_str}\n"
             "---\n"
             "Here are a list of {name}'s relevent memories towards {product}  on social media:"
-            "---\n"
             "{social_str}\n"
             "---\n"
-            "Here is a summmary of {name}: {summary} \n"
             "Here are {name}'s interests: {interests} \n"
              "{name}'s current status: {status} \n"
-            "Given this generate a list of insights {name} would have based on reading these articles. Write the insights from the perspective of {name} and only include {name}'s personal insights and how they relate to their information and current situation. Seperate the insights with a ;"
+            "Given this generate a list of insights {name} would have based on reading these articles. Write the insights from the perspective of {name} and only include {name}'s personal insights and how they relate to their information and current situation. Seperate the insights with a semicolon"
         )
             print("finished prompt")
             result =self.memory.chain(prompt).run(product=prodcut,observation_str=observation_str,name=self.name,social_str=social_mem,summary=self.get_summary(),interests=self.interests,status=self.status)
