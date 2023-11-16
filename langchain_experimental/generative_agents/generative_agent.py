@@ -304,12 +304,30 @@ Relevant context:
          return memories
     
 
-    def turn_soc_memories_into_list(self):
-        total=len(self.memory.social_media_memory.vectorstore.index_to_docstore_id)
-        social_mem=self.memory.social_media_memory.memory_stream[0:total-1]
-        observation_str = "\n".join(
-            [self.memory._format_memory_detail(o) for o in social_mem
-             ])
+    def turn_soc_memories_into_list(self,mems,now: Optional[datetime]=None):
+        prompt = PromptTemplate.from_template(
+            "{agent_summary_description}"
+            # + "\n{agent_name}'s status: {agent_status}"
+            +"\n {agent_name}'s interests:"
+            +"\n{interests}"
+            + "\nAll of  {agent_name}'s soical media interacted with posts:"
+            + "\n{relevant_memories}"
+            + "\n\n"
+            +"\n Use the following information to generate a response a list of more topic and general things {agent_name} would like to learn about on social media. Seperate each topic with ;."
+            # + suffix
+        )
+    
+        # agent_summary_description = self.get_summary(now=now)
+        relevant_memories_str = mems
+        kwargs: Dict[str, Any] = dict(
+            agent_summary_description=self.education_and_work+ "    "+ self.interests,
+            relevant_memories=relevant_memories_str,
+            interests=self.interests,
+            agent_name= self.name,
+        )
+        result= self.chain(prompt).run(**kwargs).strip()
+        return result
+      
     def product_to_memory(self, prodcut):
         total=len(self.memory.product_memory.vectorstore.index_to_docstore_id)
         print("Total Value is +"+str(total))
