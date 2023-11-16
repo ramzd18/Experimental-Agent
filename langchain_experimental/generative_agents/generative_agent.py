@@ -242,7 +242,7 @@ Relevant context:
             + "\n{relevant_memories}"
             # + "\nMost recent observations: {most_recent_memories}"
             +"\n Use the following information to generate a response from {agent_name}'s perspective. Anwser the question and only anwser from {agent_name}'s perspective and make it a personalized response. Do not include anything about being an AI model. Do not respond that you do not know. If the given information is not relevant refer a response {agent_name} would likley say based om the memories." 
-            +"Only include relevant informarion that anwsers the question and do not include extra information that does not directly awnser the question. Do not just use the information from your memories. Make the response creative and unique so it is tailored to the question."
+            +"Only include relevant informarion that anwsers the question and do not include extra information that does not directly awnser the question. Do not just only use the information from your memories. Make the response creative and unique so it is tailored to the question and not repetitive."
             + "\nThe questions being asked: {question}"
             + "\n\n"
             # + suffix
@@ -302,6 +302,14 @@ Relevant context:
              self.memory.add_memories(mem)
 
          return memories
+    
+
+    def turn_soc_memories_into_list(self):
+        total=len(self.memory.social_media_memory.vectorstore.index_to_docstore_id)
+        social_mem=self.memory.social_media_memory.memory_stream[0:total-1]
+        observation_str = "\n".join(
+            [self.memory._format_memory_detail(o) for o in social_mem
+             ])
     def product_to_memory(self, prodcut):
         total=len(self.memory.product_memory.vectorstore.index_to_docstore_id)
         print("Total Value is +"+str(total))
