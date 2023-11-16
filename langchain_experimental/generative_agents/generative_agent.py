@@ -309,7 +309,6 @@ Relevant context:
             "{agent_summary_description}"
             # + "\n{agent_name}'s status: {agent_status}"
             +"\n {agent_name}'s interests:"
-            +"\n{interests}"
             + "\nAll of  {agent_name}'s soical media interacted with posts:"
             + "\n{relevant_memories}"
             + "\n\n"
@@ -322,7 +321,6 @@ Relevant context:
         kwargs: Dict[str, Any] = dict(
             agent_summary_description=self.education_and_work+ "    "+ self.interests,
             relevant_memories=relevant_memories_str,
-            interests=self.interests,
             agent_name= self.name,
         )
         result= self.chain(prompt).run(**kwargs).strip()
