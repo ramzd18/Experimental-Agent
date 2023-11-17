@@ -327,7 +327,7 @@ Relevant context:
         return result
     def analysis_of_product(self,list_of_text):
         total_len= len(list_of_text)
-        iter= total_len//10
+        iter= total_len//13
         if (total_len<11): 
             iter=1
         begin=0
