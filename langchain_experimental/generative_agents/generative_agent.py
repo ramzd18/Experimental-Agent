@@ -347,9 +347,10 @@ Relevant context:
             "Given this generate a list of insights {name} would have based on reading these articles. Write the insights from the perspective of {name} and only include {name}'s personal insights and how they relate to their information and current situation. Make sure they are personalized insights. Seperate the insights with a semicolon."
             "Here is an example format  insight1; insight2;insight3;insight4;insight5;insight6 and so on"
         )
-            soc_mem=self.memory.fetch_socialmedia_memories(str(sublist))
+            soc_mem=self.memory.fetch_socialmedia_memories("interests")
             result =self.memory.chain(prompt).run(observation_str=str(sublist),name=self.name,social_str=soc_mem,summary=self.get_summary(),interests=str(self.interests),status=self.status)
             result=result.split(";")
+            print("result length"+str(len(result)))
             for memory in result: 
                 print("adding mem now")
                 self.memory.add_memory(memory)
