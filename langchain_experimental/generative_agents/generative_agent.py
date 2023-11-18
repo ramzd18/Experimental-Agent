@@ -309,10 +309,10 @@ Relevant context:
             "{agent_summary_description}"
             # + "\n{agent_name}'s status: {agent_status}"
             +"\n {agent_name}'s interests:"
-            + "\nAll of  {agent_name}'s soical media interacted with posts:"
+            + "\nAll of  {agent_name}'s current memories:"
             + "\n{relevant_memories}"
             + "\n\n"
-            +"\n Use the following information to generate a response a list of more topic and general things {agent_name} would like to learn about on social media. Seperate each topic with ;."
+            +"\n Use the following information to generate a response a list of specific things {agent_name} would search up to learn more about on the internet."
             # + suffix
         )
     
