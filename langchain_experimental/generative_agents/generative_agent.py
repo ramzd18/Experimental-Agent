@@ -344,7 +344,7 @@ Relevant context:
             "Here is a summary of {name}: {summary}"
             "Here are {name}'s interests: {interests} \n"
              "{name}'s current status: {status} \n"
-            "Given this generate a list of insights {name} would have based on reading these articles. Write the insights from the perspective of {name} and only include {name}'s personal insights and how they relate to their information and current situation. Make sure they are personalized insights. Write as many insights as you can. Seperate the insights with a semicolon."
+            "Given this generate a list of insights {name} would have based on reading these articles. Write the insights from the perspective of {name} and only include {name}'s personal insights and how they relate to their information and current situation. Make sure they are personalized insights. DO not just include statements like this person agrees with these articles and thinks they are relevant. Include information about what information the person finds useful and why Write as many insights as you can. Seperate the insights with a semicolon."
             "Here is an example format  insight1; insight2;insight3;insight4;insight5;insight6 and so on"
         )
             soc_mem=self.memory.fetch_socialmedia_memories("interests")
@@ -352,7 +352,7 @@ Relevant context:
             result=result.split(";")
             print("result length"+str(len(result)))
             for memory in result: 
-                print("adding mem now")
+                print(memory)
                 self.memory.add_memory(memory)
             begin=end
             print("Lowerboubds"+str(begin))
