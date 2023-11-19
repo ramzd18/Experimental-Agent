@@ -325,6 +325,27 @@ Relevant context:
         )
         result= self.chain(prompt).run(**kwargs).strip()
         return result
+    def memoriesprompt(self,mems,now: Optional[datetime]=None):
+        prompt = PromptTemplate.from_template(
+            "{agent_summary_description}"
+            # + "\n{agent_name}'s status: {agent_status}"
+            +"\n {agent_name}'s interests:"
+            + "\nAll of  {agent_name}'s current memories:"
+            + "\n{relevant_memories}"
+            + "\n\n"
+            +"\n Use the following information to generate a comprehensive list of additional memories the person may have to bolster the information we have on them. Seperate each memory with a semicolon."
+            # + suffix
+        )
+    
+        # agent_summary_description = self.get_summary(now=now)
+        relevant_memories_str = mems
+        kwargs: Dict[str, Any] = dict(
+            agent_summary_description=self.education_and_work+ "    "+ self.interests,
+            relevant_memories=relevant_memories_str,
+            agent_name= self.name,
+        )
+        result= self.chain(prompt).run(**kwargs).strip()
+        return result
     def analysis_of_product(self,list_of_text):
         total_len= len(list_of_text)
         iter= total_len//13
