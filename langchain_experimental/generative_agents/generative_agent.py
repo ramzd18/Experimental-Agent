@@ -333,7 +333,7 @@ Relevant context:
             + "\nAll of  {agent_name}'s current memories:"
             + "\n{relevant_memories}"
             + "\n\n"
-            +"\n Use the following information to generate a comprehensive list of additional memories the person may have to bolster the information we have on them. Make the memories specific and things the person may have actually experienced. Generate as many memories as you can. Seperate each memory with a semicolon."
+            +"\n Use the following information to generate a comprehensive list of additional memories the person may have to bolster the information we have on them. The memories {agent_name} already contains are limited and  I want you to produce more memories to make the information about {agent_name} more complete. Generate as many memories as you can. Seperate each memory with a semicolon."
             # + suffix
         )
     
