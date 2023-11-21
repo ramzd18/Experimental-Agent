@@ -346,7 +346,7 @@ Relevant context:
         )
         result= self.chain(prompt).run(**kwargs).strip()
         return result
-    def memoriespromptkeyword(self,mems,keywordnow: Optional[datetime]=None):
+    def memoriespromptkeyword(self,mems,keyword,now: Optional[datetime]=None):
         prompt = PromptTemplate.from_template(
             "{agent_summary_description}"
             # + "\n{agent_name}'s status: {agent_status}"
@@ -364,6 +364,7 @@ Relevant context:
             agent_summary_description=self.education_and_work+ "    "+ self.interests,
             relevant_memories=relevant_memories_str,
             agent_name= self.name,
+            keyword=keyword,
         )
         result= self.chain(prompt).run(**kwargs).strip()
         return result
