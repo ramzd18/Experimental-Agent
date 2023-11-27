@@ -236,8 +236,8 @@ Relevant context:
         prompt = PromptTemplate.from_template(
             "{agent_summary_description}"
             # + "\n{agent_name}'s status: {agent_status}"
-            +"\n {agent_name}'s interests:"
-            +"\n{interests}"
+            # +"\n {agent_name}'s interests:"
+            # +"\n{interests}"
             + "\nSummary of relevant context from {agent_name}'s memory:"
             + "\n{relevant_memories}"
             # + "\nMost recent observations: {most_recent_memories}"
@@ -381,16 +381,17 @@ Relevant context:
             "Here is a list of summarized articles {name} on the internet. "
             "{observation_str}\n"
             "---\n"
-            "Here are a list of {name}'s relevent memories towards about this on social media:"
+            "Here are a summary of {name}'s relevent memories towards the topics of these articles:"
             "{social_str}\n"
             "---\n"
             "Here is a summary of {name}: {summary}"
             "Here are {name}'s interests: {interests} \n"
-             "{name}'s current status: {status} \n"
-            "Given this generate a list of insights {name} would have based on reading these articles. Write the insights from the perspective of {name} and only include {name}'s personal insights and how they relate to their information and current situation. Make sure they are personalized insights. DO not just include statements like this person agrees with these articles and thinks they are relevant. Include information about what information the person finds useful and why Write as many insights as you can. Seperate the insights with a semicolon."
+            #  "{name}'s current status: {status} \n"
+            "Given this generate a list of insights {name} would have based on reading these articles. Write the insights from the perspective of {name} and only include {name}'s personal insights and how they relate to their information and current situation. Make sure they are personalized insights. DO not just include statements like this person agrees with these articles and thinks they are relevant. Include information about what information the person finds useful and why. For example a good insight if the person was reading an article about basketball shoes would be: new enhanced basketball shoes look interesting, but I do not know if my budget supports buying them. I might consider buying them if the price is lower or I can be ensured that they will perform effectively."
+            "Write as many insights as you can. Seperate the insights with a semicolon."
             "Here is an example format  insight1; insight2;insight3;insight4;insight5;insight6 and so on"
         )
-            soc_mem=self.memory.fetch_socialmedia_memories("interests")
+            soc_mem=self.summarize_related_memories(str(sublist))
             result =self.memory.chain(prompt).run(observation_str=str(sublist),name=self.name,social_str=soc_mem,summary=self.get_summary(),interests=str(self.interests),status=self.status)
             result=result.split(";")
             print("result length"+str(len(result)))
