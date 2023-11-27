@@ -172,7 +172,7 @@ Relevant context:
         observations = self.memory.fetch_socialmedia_memories(product)
         summary=self.get_summary()
         observation_str = "\n".join(
-            [self._format_memory_detail(o) for o in observations]
+            [self.memory._format_memory_detail(o) for o in observations]
         )
         result = self.chain(prompt).run(name=self.name,observations=observation_str,summary=summary, product=product)
         result= result.split(";")
