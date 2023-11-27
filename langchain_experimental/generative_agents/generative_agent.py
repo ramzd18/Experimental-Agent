@@ -159,6 +159,24 @@ Relevant context:
 
     def _clean_response(self, text: str) -> str:
         return re.sub(f"^{self.name} ", "", text.strip()).strip()
+    
+    def  search_prodct_questions(self, product,status,  last_k: int = 25) -> List[str]:
+        prompt = PromptTemplate.from_template(
+            "Summary of {name}: "
+            "{summary}"
+            " Relevant Memories: {observations}\n"
+            "Given theis relevant information from a persons memories, what are three relevant things you think they would search up to learn more about {product} \n"
+            "Infer things to search up even if the given if the relevant information is not relevant to {product}. Make sure the questions relate to {product} and are specific questions about {product}"
+            "Seperate each thing you want to learn with ;."
+        )
+        observations = self.memory.fetch_socialmedia_memories(product)
+        summary=self.get_summary()
+        observation_str = "\n".join(
+            [self._format_memory_detail(o) for o in observations]
+        )
+        result = self.chain(prompt).run(name=self.name,observations=observation_str,summary=summary, product=product)
+        result= result.split(";")
+        return result
 
     # def generate_reaction(
     #     self, observation: str, now: Optional[datetime] = None
