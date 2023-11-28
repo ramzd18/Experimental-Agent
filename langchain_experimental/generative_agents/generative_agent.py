@@ -435,6 +435,7 @@ Relevant context:
             soc_mem=self.summarize_related_memories(str(list))
             result =self.memory.chain(prompt).run(observation_str=str(list),name=self.name,social_str=soc_mem,summary=self.get_summary(),interests=str(self.interests),status=self.status)
             result=result.split(";")
+            print(result)
             resultque.put(result)
     ## Function used when agent is initialized. Stores relevant memory about a specific product. 
     def product_to_memory(self, prodcut):
