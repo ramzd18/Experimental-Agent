@@ -416,7 +416,7 @@ Relevant context:
             print("result length"+str(len(result)))
             for memory in result: 
                 print(memory)
-                self.memory.add_memory(memory)
+                # self.memory.add_memory(memory)
                 totallist.append(memory)
             begin=end
             print("Lowerboubds"+str(begin))
