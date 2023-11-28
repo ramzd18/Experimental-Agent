@@ -8,7 +8,8 @@ from langchain.schema.language_model import BaseLanguageModel
 
 from langchain_experimental.generative_agents.memory import GenerativeAgentMemory
 from langchain_experimental.pydantic_v1 import BaseModel, Field
-
+import queue
+import threading
 
 class GenerativeAgent(BaseModel):
     """An Agent as a character with memory and innate characteristics."""
@@ -396,6 +397,26 @@ Relevant context:
         totallist=[]
         while(end<total_len-1): 
             sublist= list_of_text[begin:end]
+            resultque=queue.Queue()
+            task_thread = threading.Thread(target=self.memoryfunc, args=(sublist,resultque))
+            task_thread.start()
+            task_thread.join(timeout=5)
+            if task_thread.is_alive():
+               print("skip")
+            else:
+                result=resultque.get()
+                for memory in result: 
+                    print(memory)
+                    # self.memory.add_memory(memory)
+                    totallist.append(memory)
+            begin=end
+            print("Lowerboubds"+str(begin))
+            end=end+iter
+            print("Up"+str(end))
+        return totallist
+
+
+    def memoryfunc(self,list,resultque): 
             prompt = PromptTemplate.from_template(
             "Here is a list of summarized articles {name} on the internet. "
             "{observation_str}\n"
@@ -410,22 +431,10 @@ Relevant context:
             "Write as many insights as you can. Seperate the insights with a semicolon."
             "Here is an example format  insight1; insight2;insight3;insight4;insight5;insight6 and so on"
         )
-            soc_mem=self.summarize_related_memories(str(sublist))
-            result =self.memory.chain(prompt).run(observation_str=str(sublist),name=self.name,social_str=soc_mem,summary=self.get_summary(),interests=str(self.interests),status=self.status)
+            soc_mem=self.summarize_related_memories(str(list))
+            result =self.memory.chain(prompt).run(observation_str=str(list),name=self.name,social_str=soc_mem,summary=self.get_summary(),interests=str(self.interests),status=self.status)
             result=result.split(";")
-            print("result length"+str(len(result)))
-            for memory in result: 
-                print(memory)
-                # self.memory.add_memory(memory)
-                totallist.append(memory)
-            begin=end
-            print("Lowerboubds"+str(begin))
-            end=end+iter
-            print("Up"+str(end))
-        return totallist
-
-
-        
+            resultque.put(result)
     ## Function used when agent is initialized. Stores relevant memory about a specific product. 
     def product_to_memory(self, prodcut):
         total=len(self.memory.product_memory.vectorstore.index_to_docstore_id)
