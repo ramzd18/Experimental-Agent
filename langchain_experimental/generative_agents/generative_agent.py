@@ -405,6 +405,7 @@ Relevant context:
             if task_thread.is_alive():
                print("skip")
             else:
+                print("did nto skip")
                 result=resultque.get()
                 for memory in result: 
                     print(memory)
