@@ -401,7 +401,7 @@ Relevant context:
             resultque=queue.Queue()
             task_thread = threading.Thread(target=self.memoryfunc, args=(sublist,resultque))
             task_thread.start()
-            task_thread.join(timeout=10)
+            task_thread.join(timeout=100)
             if task_thread.is_alive():
                print("skip")
             else:
