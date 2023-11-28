@@ -393,6 +393,7 @@ Relevant context:
             iter=1
         begin=0
         end=iter
+        totallist=[]
         while(end<total_len-1): 
             sublist= list_of_text[begin:end]
             prompt = PromptTemplate.from_template(
@@ -416,10 +417,12 @@ Relevant context:
             for memory in result: 
                 print(memory)
                 self.memory.add_memory(memory)
+                totallist.append(memory)
             begin=end
             print("Lowerboubds"+str(begin))
             end=end+iter
             print("Up"+str(end))
+        return totallist
 
 
         
