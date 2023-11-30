@@ -275,6 +275,7 @@ Relevant context:
         interests=str(self.interests)
         agent_summary_description = self.get_summary(now=now)
         relevant_memories_str = self.summarize_related_memories(question)
+        print(relevant_memories_str)
         current_time_str = (
             datetime.now().strftime("%B %d, %Y, %I:%M %p")
             if now is None
