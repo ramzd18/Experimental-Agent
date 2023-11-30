@@ -1,7 +1,7 @@
 import re
 from datetime import datetime
 from typing import Any, Dict, List, Optional, Tuple
-
+from langchain.chat_models import ChatOpenAI
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from langchain.schema.language_model import BaseLanguageModel
@@ -57,7 +57,11 @@ class GenerativeAgent(BaseModel):
         return LLMChain(
             llm=self.llm, prompt=prompt, verbose=self.verbose, memory=self.memory
         )
-
+    def chain1(self, prompt: PromptTemplate) -> LLMChain:
+        llm1 = ChatOpenAI(model_name='gpt-4',temperature=0)
+        return LLMChain(
+            llm=llm1, prompt=prompt, verbose=self.verbose, memory=self.memory
+        )
     def _get_entity_from_observation(self, observation: str) -> str:
         prompt = PromptTemplate.from_template(
             "What is the observed entity in the following observation? {observation}"
@@ -285,7 +289,7 @@ Relevant context:
 
             # agent_status=self.status,
         )
-        result= self.chain(prompt).run(**kwargs).strip()
+        result= self.chain1(prompt).run(**kwargs).strip()
         self.memory.add_memory(result)
         return result
     
