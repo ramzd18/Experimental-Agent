@@ -254,20 +254,21 @@ Relevant context:
     def generate_question_response(self, question:str, now: Optional[datetime]=None)->str: 
         """React to a given observation or dialogue act."""
         prompt = PromptTemplate.from_template(
+            "The following is information about a person who is being interviewed by a company for their user research. Use the following information to generate a realistic response for the person.Make sure it is specific to them and try using their syntax.\n"
             "{agent_summary_description}"
             # + "\n{agent_name}'s status: {agent_status}"
-            # +"\n {agent_name}'s interests:"
-            # +"\n{interests}"
+            +"\n {agent_name}'s interests:"
+            +"\n{interests}"
             + "\nSummary of relevant context from {agent_name}'s memory:"
             + "\n{relevant_memories}"
             # + "\nMost recent observations: {most_recent_memories}"
             +"\n Use the following information to generate a response from {agent_name}'s perspective. Anwser the question and only anwser from {agent_name}'s perspective and make it a personalized response. Do not include anything about being an AI model. Do not respond that you do not know. If the given information is not relevant refer a response {agent_name} would likley say based om the memories." 
-            +"Only include relevant informarion that anwsers the question and do not include extra information that does not directly awnser the question. Do not just only use the information from your memories. Make the response creative and unique so it is tailored to the question and not repetitive."
+            +"Only include relevant informarion that anwsers the question and do not include extra information that does not directly awnser the question. Do not just only use the information from your memories. Make the response creative and unique so it is tailored to the question and not repetitive. Make sure the response is a realistic thing a person would say to the question."
             + "\nThe questions being asked: {question}"
             + "\n\n"
             # + suffix
         )
-    
+        interests=str(self.interests)
         agent_summary_description = self.get_summary(now=now)
         relevant_memories_str = self.summarize_related_memories(question)
         current_time_str = (
