@@ -84,6 +84,7 @@ class GenerativeAgent(BaseModel):
             """
 Summarize the following social media posts and memories relating to {observation}. If there are not relevant posts or information infer and make infromation that only relates to  {observation}. 
 Include only information about {observation} in the summary. Do not include miscellanous information about the person and thier background. When you return the memories make sure to include that this is what {name} thinks.
+Make sure you are using the following posts and memories to make the summary. Make it very specific and tailored.
 Relevant social media posts:
 {media}
 Context from memory:
