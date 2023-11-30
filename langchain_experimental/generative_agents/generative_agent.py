@@ -98,8 +98,6 @@ Context from memory:
         # q1=q1, queries=[q1, q2]
         relevmedia= self.memory.fetch_socialmedia_memories(observation)
         relevmemories = self.memory.fetch_memories(observation)
-        print(relevmedia)
-        print(relevmemories)
         return self.chain(prompt=prompt).run(observation=observation,media=relevmedia,memories=relevmemories,name=self.name).strip()
     
     ### Takes in personality trait and its corresponding integer value and return how disposed the agent is to that trait
