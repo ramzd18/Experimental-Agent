@@ -82,14 +82,13 @@ class GenerativeAgent(BaseModel):
         """Summarize memories that are most relevant to an observation."""
         prompt = PromptTemplate.from_template(
             """
-Summarize the following social media posts and memories relating to {observation}. If there are not relevant posts or information infer and make infromation that only relates to  {observation}. 
-Include only information about {observation} in the summary. Do not include miscellanous information about the person and thier background. When you return the memories make sure to include that this is what {name} thinks.
-Make sure you are using the following posts and memories to make the summary. Make it very specific and tailored.
+A person is being interviewed for user research by a company. They ask about {observation}. Use the following social media posts and memories from this person to crete information and opinions the person has about the question. If there are not relevant posts or information infer and make infromation that only relates to  {observation}. 
+\ Do not include miscellanous information about the person and thier background. When you return the memories make sure to include that this is what {name} thinks. Make it detailed and infer information to make it as detailed as possible.
+Make sure you are using the following posts and memories to make the information.
 Relevant social media posts:
 {media}
 Context from memory:
 {memories}
-Relevant context: 
 """
         )
         # entity_name = self._get_entity_from_observation(observation)
