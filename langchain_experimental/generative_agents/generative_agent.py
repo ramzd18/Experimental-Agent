@@ -279,7 +279,7 @@ Context from memory:
         memstr=""
         relvmems= self.memory.fetch_memories(question)
         for doc in relvmems: 
-            memstr+="New Memory: "+ doc['page_content']
+            memstr+="New Memory: "+ doc.page_content
         # print(relevant_memories_str)
         current_time_str = (
             datetime.now().strftime("%B %d, %Y, %I:%M %p")
