@@ -365,7 +365,7 @@ Context from memory:
             + "\nAll of  {agent_name}'s current memories:"
             + "\n{relevant_memories}"
             + "\n\n"
-            +"\n Use the following information to generate a comprehensive list of additional memories the person may have to bolster the information we have on them. The memories {agent_name} already contains are limited and  I want you to produce more memories to make the information about {agent_name} more complete. Generate the memories with extensive detail. Seperate each memory with a semicolon."
+            +"\n Use the following information to generate a comprehensive list of additional memories the person may have to bolster the information we have on them. The memories {agent_name} already contains are limited and  I want you to produce more memories to make the information about {agent_name} more complete. Generate the memories with extensive detail. Seperate each memory with a semicolon.Example format: mem1;mem2;mem3;mem4 ..."
             # + suffix
         )
     
@@ -376,7 +376,7 @@ Context from memory:
             relevant_memories=relevant_memories_str,
             agent_name= self.name,
         )
-        result= self.chain(prompt).run(**kwargs).strip()
+        result= self.chain(prompt).run(**kwargs)
         return result
     def memoriespromptkeyword(self,mems,keyword,now: Optional[datetime]=None):
         prompt = PromptTemplate.from_template(
