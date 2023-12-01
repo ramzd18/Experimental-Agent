@@ -142,7 +142,8 @@ Context from memory:
             + suffix
         )
         agent_summary_description = self.get_summary(now=now)
-        relevant_memories_str = self.summarize_related_memories(observation)
+        # relevant_memories_str = self.summarize_related_memories(observation)
+        relv_memories= self.memory.fetch_memories(observation)
         current_time_str = (
             datetime.now().strftime("%B %d, %Y, %I:%M %p")
             if now is None
@@ -274,8 +275,12 @@ Context from memory:
         )
         interests=str(self.interests)
         agent_summary_description = self.get_summary(now=now)
-        relevant_memories_str = self.summarize_related_memories(question)
-        print(relevant_memories_str)
+        # relevant_memories_str = self.summarize_related_memories(question)
+        memstr=""
+        relvmems= self.memory.fetch_memories(question)
+        for doc in relvmems: 
+            memstr+="New Memory: "+ doc['page_content']
+        # print(relevant_memories_str)
         current_time_str = (
             datetime.now().strftime("%B %d, %Y, %I:%M %p")
             if now is None
@@ -283,7 +288,7 @@ Context from memory:
         )
         kwargs: Dict[str, Any] = dict(
             agent_summary_description=self.education_and_work+ "    "+ self.interests,
-            relevant_memories=relevant_memories_str,
+            relevant_memories=memstr,
             interests=self.interests,
             agent_name= self.name,
             question=question
