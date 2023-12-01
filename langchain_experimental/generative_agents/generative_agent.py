@@ -358,14 +358,14 @@ Context from memory:
         return result
     def memoriesprompt(self,mems,now: Optional[datetime]=None):
         prompt = PromptTemplate.from_template(
-            "I am trying to rebuild a persons memory. I have soem of their memories and information and I want to rebuild it with the information. Use the following information to generate additional memories for this person"
+            "I am trying to rebuild a persons memory. I have soem of their memories and information and I want to rebuild it with the information. Use the following information to generate additional memories for this person.I do not want sufrace level memories but rather deep, detailed memories core to the person."
             "{agent_summary_description}"
             # + "\n{agent_name}'s status: {agent_status}"
             +"\n {agent_name}'s interests:"
             + "\nAll of  {agent_name}'s current memories:"
             + "\n{relevant_memories}"
             + "\n\n"
-            +"\n Use the following information to generate a comprehensive list of additional memories the person may have to bolster the information we have on them. The memories {agent_name} already contains are limited and  I want you to produce more memories to make the information about {agent_name} more complete. Generate as many memories as you can. Seperate each memory with a semicolon."
+            +"\n Use the following information to generate a comprehensive list of additional memories the person may have to bolster the information we have on them. The memories {agent_name} already contains are limited and  I want you to produce more memories to make the information about {agent_name} more complete. Generate the memories with extensive detail. Seperate each memory with a semicolon."
             # + suffix
         )
     
