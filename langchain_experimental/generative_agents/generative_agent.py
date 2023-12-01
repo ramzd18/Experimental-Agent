@@ -428,7 +428,55 @@ Context from memory:
             end=end+iter
             print("Up"+str(end))
         return totallist
+    def marketing_analysis(self,first,second):
+        prompt=PromptTemplate.from_template(
+            "You are a person who is being interviewed by a company to understand what mareting materials you like more. Here is information about you:\n"
+             "{agent_summary_description}"
+            # + "\n{agent_name}'s status: {agent_status}"
+            +"\n {agent_name}'s interests:"
+            +"\n{interests}"
+            + "\nSummary of relevant context from {agent_name}'s memory:"
+            + "\n{relevant_memories}"
 
+            "Here is relevant information about yourself: "
+            +"You are given two marketing materials and you are going to decide which one you like more."
+            +"For each material you are going to score the material on clarity, personalization, Impact,and Retention Time.\n"
+            +"Clarity represents how clear the material was and how easily you understood it."
+            +"Personalization represents how well the material speaks to you and relates to you."
+            +"Impact represents how powerful the message is the power it had to call you to action."
+            +"Retention Time represents how long you wpend viewing or interacting with the material."
+            +"You are gonna rate each metric for the material on a scale of 0 to 1. Return the scores in two lists."
+            +"Here is an example return format: [clarity: .42,personalization:.51,impact:.12,retention_time:.62 ], [clarity: .11,personalization:.21,impact:.61,retention_time:.37]"
+            +"Here is the first material: \n"
+            +{first}
+            +"Here is the second material: \n"
+            +{second}
+        )
+        interests=str(self.interests)
+        agent_summary_description = self.get_summary()
+        # relevant_memories_str = self.summarize_related_memories(question)
+        memstr=""
+        question= first+ " "+second
+        relvmems= self.memory.fetch_memories(question)
+        for doc in relvmems: 
+            memstr+="New Memory: "+ doc.page_content
+        # print(relevant_memories_str)
+        # current_time_str = (
+        #     datetime.now().strftime("%B %d, %Y, %I:%M %p")
+        #     if now is None
+        #     else now.strftime("%B %d, %Y, %I:%M %p")
+        # )
+        kwargs: Dict[str, Any] = dict(
+            agent_summary_description=self.education_and_work+ "    "+ self.interests,
+            relevant_memories=memstr,
+            interests=self.interests,
+            agent_name= self.name,
+            first=first,
+            second=second
+        )
+
+        result= self.chain(prompt).run(**kwargs)
+        return result
 
     def memoryfunc(self,list,resultque): 
             prompt = PromptTemplate.from_template(
