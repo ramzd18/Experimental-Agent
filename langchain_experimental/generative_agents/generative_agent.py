@@ -473,7 +473,8 @@ Context from memory:
             interests=self.interests,
             agent_name= self.name,
             first=first,
-            second=second
+            second=second,
+            context=context
         )
 
         result= self.chain(prompt).run(**kwargs)
