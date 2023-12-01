@@ -428,9 +428,11 @@ Context from memory:
             end=end+iter
             print("Up"+str(end))
         return totallist
-    def marketing_analysis(self,first,second):
+    def marketing_analysis(self,first,second,context):
         prompt=PromptTemplate.from_template(
             "You are a person who is being interviewed by a company to understand what mareting materials you like more. Here is information about you: \n"
+            "Here is the context of the product you are evaluating:"
+            "{context}"
             "Here is relevant information about yourself: "
              "{agent_summary_description}"
             # + "\n{agent_name}'s status: {agent_status}"
