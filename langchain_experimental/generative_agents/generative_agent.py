@@ -456,8 +456,8 @@ Context from memory:
         agent_summary_description = self.get_summary()
         # relevant_memories_str = self.summarize_related_memories(question)
         memstr=""
-        question= first+ " "+second
-        relvmems= self.memory.fetch_memories(question)
+        # question= first+ " "+second
+        relvmems= self.memory.fetch_memories(first)
         for doc in relvmems: 
             memstr+="New Memory: "+ doc.page_content
         # print(relevant_memories_str)
