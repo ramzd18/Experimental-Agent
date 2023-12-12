@@ -428,7 +428,7 @@ Context from memory:
             end=end+iter
             print("Up"+str(end))
         return totallist
-    def marketing_analysis(self,first,second,context):
+    def marketing_analysis(self,first,context):
         prompt=PromptTemplate.from_template(
             "You are a person who is being interviewed by a company to understand what mareting materials you like more. Here is information about you: \n"
             "Here is the context of the product you are evaluating:"
@@ -440,18 +440,17 @@ Context from memory:
             "\n{interests}"
              "\nSummary of relevant context from {agent_name}'s memory:"
              "\n{relevant_memories}"
-            "You are given two marketing materials and you are going to decide which one you like more."
-            "For each material you are going to score the material on clarity, personalization, Impact,and Retention Time.\n"
+            "You are going to rate the marketing material."
+            "For the material you are going to score it on clarity, personalization, Impact,and Retention Time.\n"
             "Clarity represents how clear the material was and how easily you understood it."
             "Personalization represents how well the material speaks to you and relates to you."
             "Impact represents how powerful the message is the power it had to call you to action."
             "Retention Time represents how long you wpend viewing or interacting with the material."
-            "You are gonna rate each metric for the material on a scale of 0 to 1. Return the scores in two lists."
-            "Here is an example return format: [clarity: .42,personalization:.51,impact:.12,retention_time:.62 ], [clarity: .11,personalization:.21,impact:.61,retention_time:.37]"
-            "Here is the first material: \n"
+            "You are gonna rate each metric for the material on a scale of 0 to 1 and also return a new material that you think is better. Return the output in a list."
+            "Here is an example return format: [clarity: .42,personalization:.51,impact:.12,retention_time:.62, optimized_message: This is the better version of the mssage according to you ]"
+            "Here is the material: \n"
             "{first}"
-            "Here is the second material: \n"
-            "{second}"
+           
         )
         interests=str(self.interests)
         agent_summary_description = self.get_summary()
