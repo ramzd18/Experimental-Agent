@@ -472,7 +472,6 @@ Context from memory:
             interests=self.interests,
             agent_name= self.name,
             first=first,
-            second=second,
             context=context
         )
 
