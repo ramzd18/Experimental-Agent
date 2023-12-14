@@ -261,7 +261,7 @@ Context from memory:
         prompt = PromptTemplate.from_template(
             "The following is information about a person who is being interviewed by a company for their user research. Use the following information to generate a realistic response for the person.Make sure it is specific to them and try using their syntax.\n"
             "{agent_summary_description}"
-            # + "\n{agent_name}'s status: {agent_status}"
+            + "\n{agent_name}'s status: {agent_status}"
             +"\n {agent_name}'s interests:"
             +"\n{interests}"
             + "\nSummary of relevant context from {agent_name}'s memory:"
