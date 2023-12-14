@@ -604,3 +604,13 @@ Context from memory:
     #     return (
     #         f"{summary}\nIt is {current_time_str}.\n{self.name}'s status: {self.status}"
     #     )
+    def __getstate__(self):
+        # Return everything except the lock
+        state = self.__dict__.copy()
+        del state['lock']
+        return state
+
+    def __setstate__(self, state):
+        # Restore the object's state and reinitialize the lock
+        self.__dict__.update(state)
+        self.lock = threading.Lock()
