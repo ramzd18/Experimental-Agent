@@ -291,7 +291,8 @@ Context from memory:
             relevant_memories=memstr,
             interests=self.interests,
             agent_name= self.name,
-            question=question
+            question=question,
+            agent_status=self.status
 
             # agent_status=self.status,
         )
