@@ -190,7 +190,7 @@ Context from memory:
             "{summary}"
             " Here ia a description of the person that was inputted: {description}"
             "Given theis relevant information from a persons memories, what are five relevant things you think they would search up to fit the desciprtion that was inputted \n"
-            "Infer things to search up even if the given if the relevant information is not relevant to {product}. Make sure the questions relate to {product} and are specific questions about {product}"
+            " Make sure the questions relate to {description}."
             "Seperate each thing you want to learn with ;."
         )
         summary=self.get_summary()
