@@ -184,6 +184,19 @@ Context from memory:
         result = self.chain(prompt).run(name=self.name,observations=observation_str,summary=summary, product=product)
         result= result.split(";")
         return result
+    def  search_description_questions(self, description,  last_k: int = 25) -> List[str]:
+        prompt = PromptTemplate.from_template(
+            "Summary of {name}: "
+            "{summary}"
+            " Here ia a description of the person that was inputted: {description}"
+            "Given theis relevant information from a persons memories, what are five relevant things you think they would search up to fit the desciprtion that was inputted \n"
+            "Infer things to search up even if the given if the relevant information is not relevant to {product}. Make sure the questions relate to {product} and are specific questions about {product}"
+            "Seperate each thing you want to learn with ;."
+        )
+        summary=self.get_summary()
+        result = self.chain(prompt).run(name=self.name,summary=summary,description=description)
+        result= result.split(";")
+        return result
 
     # def generate_reaction(
     #     self, observation: str, now: Optional[datetime] = None
