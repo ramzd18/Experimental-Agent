@@ -505,14 +505,14 @@ Context from memory:
             #  "{name}'s current status: {status} \n"
             "Given this generate a list of memories {name} would remember based on reading these articles. Write the memories from the perspective of {name} and only include {name}'s personal insights and how they relate to their information and current situation. Make sure they are personalized memories. "
             "Write as many memories as you can. Seperate the memories with a semicolon."
-            "For example, if the person we were reading an article about basketball shoes, but was indifferent about basketball a memory could be about standing and watching basketball games, but being bored by the pace of play."
-            "Avoid using works like I remember or I recall and instead state the memory directly."
+            "For example, if the person we were reading an article about basketball shoes, and the person enjoyed playing basketball a memory coud be I played countless games of pick up basketball with my friends and tried jumping so hard my shoe broke."
+            "Avoid using works like I remember or I recall and instead state the memory directly and include extremely specific details in the memory so they are not broad or general"
             "Here is an example format  insight1; insight2;insight3;insight4;insight5;insight6 and so on"
         )
             soc_mem=self.summarize_related_memories(str(list))
             result =self.chain1(prompt).run(observation_str=str(list),name=self.name,social_str=soc_mem,summary=self.get_summary(),interests=str(self.interests),status=self.status)
             result=result.split(";")
-            print(result)
+            print(result) 
             resultque.put(result)
     ## Function used when agent is initialized. Stores relevant memory about a specific product. 
     def product_to_memory(self, prodcut):
