@@ -505,6 +505,8 @@ Context from memory:
             #  "{name}'s current status: {status} \n"
             "Given this generate a list of memories {name} would remember based on reading these articles. Write the memories from the perspective of {name} and only include {name}'s personal insights and how they relate to their information and current situation. Make sure they are personalized memories. "
             "Write as many memories as you can. Seperate the memories with a semicolon."
+            "For example, if the person we were reading an article about basketball shoes, but was indifferent about basketball a memory could be about standing and watching basketball games, but being bored by the pace of play."
+            "Avoid using works like I remember or I recall and instead state the memory directly."
             "Here is an example format  insight1; insight2;insight3;insight4;insight5;insight6 and so on"
         )
             soc_mem=self.summarize_related_memories(str(list))
