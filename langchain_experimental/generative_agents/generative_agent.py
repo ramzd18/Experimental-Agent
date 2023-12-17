@@ -58,7 +58,7 @@ class GenerativeAgent(BaseModel):
             llm=self.llm, prompt=prompt, verbose=self.verbose, memory=self.memory
         )
     def chain1(self, prompt: PromptTemplate) -> LLMChain:
-        llm1 = ChatOpenAI(model_name='gpt-4',temperature=0.7)
+        llm1 = ChatOpenAI(model_name='gpt-4',temperature=0.5)
         return LLMChain(
             llm=llm1, prompt=prompt, verbose=self.verbose, memory=self.memory
         )
@@ -281,7 +281,7 @@ Context from memory:
             + "\n{relevant_memories}"
             # + "\nMost recent observations: {most_recent_memories}"
             + "This is the question you are being asked {question}"
-            +" Anwser the following question from {agent_name} perspective. Make sure the response is personalized to you and not something you would imagine everyone says. Make it unique to you. Only include relevant information that anwsers the question."
+            +" Anwser the following question from {agent_name} perspective. Make sure the response is personalized to you and not something you would imagine everyone says. Make it unique to you. Only include relevant information that anwsers the question and make the response concise with only information that directly anwsers the question."
             + "\n\n"
             # + suffix
         )
