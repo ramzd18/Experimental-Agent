@@ -272,7 +272,7 @@ Context from memory:
     def generate_question_response(self, question:str, now: Optional[datetime]=None)->str: 
         """React to a given observation or dialogue act."""
         prompt = PromptTemplate.from_template(
-            "The following is information about a person who is being interviewed by a company for their user research. Use the following information to generate a realistic response for the person.Make sure it is specific to them and try using their syntax.\n"
+            "Imagine you are a {agent_name} and you are being interviewed by a company to better understand you and your perspective. Here is some information about you:\n"
             "{agent_summary_description}"
             + "\n{agent_name}'s status: {agent_status}"
             +"\n {agent_name}'s interests:"
@@ -280,9 +280,8 @@ Context from memory:
             + "\nSummary of relevant context from {agent_name}'s memory:"
             + "\n{relevant_memories}"
             # + "\nMost recent observations: {most_recent_memories}"
-            +"\n Use the following information to generate a response from {agent_name}'s perspective. Anwser the question and only anwser from {agent_name}'s perspective and make it a personalized response. Do not include anything about being an AI model. Do not respond that you do not know. If the given information is not relevant refer a response {agent_name} would likley say based om the memories." 
-            +"Only include relevant informarion that anwsers the question and do not include extra information that does not directly awnser the question. Do not just only use the information from your memories. Make the response creative and unique so it is tailored to the question and not repetitive. Make sure the response is a realistic thing a person would say to the question."
-            + "\nThe questions being asked: {question}"
+            + "This is the question you are being asked {question}"
+            +" Anwser the following question from {agent_name} perspective. Make sure the response is personalized to you and not something you would imagine everyone says. Make it unique to you. Only include relevant information that anwsers the question."
             + "\n\n"
             # + suffix
         )
@@ -506,7 +505,7 @@ Context from memory:
             " Imagine that you are {name}. Given this generate a list of memories {name} would remember based on reading these articles. Write the memories from the perspective of {name}. Make sure they are personalized memories. "
             "Write as many memories as you can. Seperate the memories with a semicolon."
             "For example, if the person we were reading an article about basketball shoes, and the person enjoyed playing basketball a memory coud be I played countless games of pick up basketball with my friends and tried jumping so hard my shoe broke."
-            "Avoid using works like I remember or I recall and instead state the memory directly and include extremely specific details in the memory so they are not broad or general"
+            "Avoid using works like I remember or I recall or I am feeling. and instead state the memory directly and include extremely specific details in the memory so they are not broad or general. Be as creative as you can be."
             "Here is an example format memory1;memory2;memory3;memory4;memory5;memory6 and so on"
         )
             soc_mem=self.summarize_related_memories(str(list))
