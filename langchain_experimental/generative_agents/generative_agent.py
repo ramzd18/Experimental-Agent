@@ -58,7 +58,7 @@ class GenerativeAgent(BaseModel):
             llm=self.llm, prompt=prompt, verbose=self.verbose, memory=self.memory
         )
     def chain1(self, prompt: PromptTemplate) -> LLMChain:
-        llm1 = ChatOpenAI(model_name='gpt-4',temperature=0)
+        llm1 = ChatOpenAI(model_name='gpt-4',temperature=0.7)
         return LLMChain(
             llm=llm1, prompt=prompt, verbose=self.verbose, memory=self.memory
         )
