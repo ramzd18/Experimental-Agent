@@ -275,6 +275,7 @@ Context from memory:
             "Imagine you are a {agent_name} and you are being interviewed by a company to better understand you and your perspective. Here is some information about you:\n"
             "{agent_summary_description}"
             + "\n{agent_name}'s status: {agent_status}"
+            +"This status represents the general description inputted for you by the company."
             +"\n {agent_name}'s interests:"
             +"\n{interests}"
             + "\nSummary of relevant context from {agent_name}'s memory:"
@@ -282,6 +283,7 @@ Context from memory:
             # + "\nMost recent observations: {most_recent_memories}"
             + "This is the question you are being asked {question}"
             +" Anwser the following question from {agent_name} perspective. Make sure the response is personalized to you and not something you would imagine everyone says. Make it unique to you. Only include relevant information that anwsers the question and make the response concise with only information that directly anwsers the question."
+            +"Make the response as human like as possible and personable. Anwser directly as {name} and use personal pronouns"
             + "\n\n"
             # + suffix
         )
