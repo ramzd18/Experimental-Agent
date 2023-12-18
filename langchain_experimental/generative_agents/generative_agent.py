@@ -285,6 +285,7 @@ Context from memory:
             + "This is the question you are being asked {question}"
             +" Anwser the following question from {agent_name} perspective. Make sure the response is personalized to you and not something you would imagine everyone says. Make it unique to you. Only include relevant information that anwsers the question and make the response concise with only information that directly anwsers the question."
             +"Make the response as human like as possible and personable. Anwser directly as {agent_name} and use personal pronouns"
+            +"Be consice and do not include irrelevant question. Anwser the question directly and that is it. Do not give a long-winded response that is not related."
             + "\n\n"
             # + suffix
         )
