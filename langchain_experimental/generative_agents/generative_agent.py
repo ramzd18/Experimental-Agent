@@ -177,6 +177,7 @@ Context from memory:
             "Seperate each thing you want to learn with ;."
         )
         observations = self.memory.fetch_socialmedia_memories(product)
+        print("searching product stuff up")
         summary=self.get_summary()
         observation_str = "\n".join(
             [self.memory._format_memory_detail(o) for o in observations]
