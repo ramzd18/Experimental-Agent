@@ -465,7 +465,7 @@ Context from memory:
             "Impact represents how powerful the message is the power it had to call you to action."
             "Retention Time represents how long you wpend viewing or interacting with the material."
             "You are gonna rate each metric for the material on a scale of 0 to 1 and also return a new material that you think would sell more. Make sure the new optimized material you return be similair length to the inputted material. So if the input is 8 words your output shoult not be longer than 13 words. Return the output in a list. "
-            "Make sure the new tagline is catchy and makes sense for the brand. Do not make too overly personalized to you."
+            "Make sure the new tagline is catchy and makes sense for the brand. Do not make too overly personalized to you. Make something you think many people would like"
             "Here is an example return format: [clarity: .42,personalization:.51,impact:.12,retention_time:.62, optimized_message: This is the better version of the mssage according to you ]. Make sure it follows this format and uses semicolons as shown in the example."
             "Here is the material: \n"
             "{first}"
