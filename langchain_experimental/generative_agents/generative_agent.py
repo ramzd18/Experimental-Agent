@@ -457,13 +457,14 @@ Context from memory:
             "\n{interests}"
              "\nSummary of relevant context from {agent_name}'s memory:"
              "\n{relevant_memories}"
+             "Your status: {status}"
             "You are going to rate the marketing material."
             "For the material you are going to score it on clarity, personalization, Impact,and Retention Time.\n"
             "Clarity represents how clear the material was and how easily you understood it."
             "Personalization represents how well the material speaks to you and relates to you."
             "Impact represents how powerful the message is the power it had to call you to action."
             "Retention Time represents how long you wpend viewing or interacting with the material."
-            "You are gonna rate each metric for the material on a scale of 0 to 1 and also return a new material that you would give the highest score to on the above categories. Return the output in a list. "
+            "You are gonna rate each metric for the material on a scale of 0 to 1 and also return a new material that you would give the highest score to on the above categories. Try to have the new optimized material you return be similair length to the inputted material. Return the output in a list. "
             "Here is an example return format: [clarity: .42,personalization:.51,impact:.12,retention_time:.62, optimized_message: This is the better version of the mssage according to you ]. Make sure it follows this format and uses semicolons as shown in the example."
             "Here is the material: \n"
             "{first}"
@@ -489,10 +490,11 @@ Context from memory:
             interests=self.interests,
             agent_name= self.name,
             first=first,
-            context=context
+            context=context,
+            status=self.status
         )
 
-        result= self.chain(prompt).run(**kwargs)
+        result= self.chain1(prompt).run(**kwargs)
         return result
 
     def memoryfunc(self,list,resultque): 
