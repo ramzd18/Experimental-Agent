@@ -640,7 +640,7 @@ Context from memory:
             "content": [
                 {
                 "type": "text",
-                "text": f"Here is conteext of the wbesite you are looking at.{website_context}. Here is a summary of yourself. Given this picture of the website respond with wheter you want to click a button on the website or want to scroll down or up. Respond with only your anwser.If you want to click somewhere say exactly where you would want to click"
+                "text": f"Here is conteext of the wbesite you are looking at.{website_context}. Here is a summary of yourself. Given this picture of the website respond with wheter you want to click a button on the website or want to scroll down or up. Respond with only your anwser.If you want to click somewhere say exactly where you would want to click. Choose what you would like to click based on your profile, tailor it to you"
                 },
                 {
                 "type": "image_url",
