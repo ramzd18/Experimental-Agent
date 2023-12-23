@@ -11,7 +11,9 @@ from langchain_experimental.pydantic_v1 import BaseModel, Field
 import queue
 import threading
 import time
-
+from openai import OpenAI
+import base64
+import requests
 class GenerativeAgent(BaseModel):
     """An Agent as a character with memory and innate characteristics."""
 
@@ -617,7 +619,44 @@ Context from memory:
 
             # + f"\n An initial small summary {self.summary}"
         )
+    # def encode_image(image_path):
+    #     with open(image_path, "rb") as image_file:
+    #         return base64.b64encode(image_file.read()).decode('utf-8')
+        
+    def vision_test(self,api_key,img,website_context):
+        summary=self.get_summary+ "Here are relevant memories you have related to the topic."+ self.memory.fetch_socialmedia_memories(website_context)
+        client = OpenAI(
+        api_key=api_key)
+        headers = {
+  "Content-Type": "application/json",
+  "Authorization": f"Bearer {api_key}"
+}
 
+        payload = {
+        "model": "gpt-4-vision-preview",
+        "messages": [
+            {
+            "role": "user",
+            "content": [
+                {
+                "type": "text",
+                "text": f"Here is conteext of the wbesite you are looking at.{website_context}. Here is a summary of yourself. Given this picture of the website respond with wheter you want to click a button on the website or want to scroll down or up. Respond with only your anwser."
+                },
+                {
+                "type": "image_url",
+                "image_url": {
+                    "url": f"data:image/jpeg;base64,{img}"
+                }
+                }
+            ]
+            }
+        ],
+        "max_tokens": 300
+        }
+
+        response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)
+
+        return(response.json())
     # def get_full_header(
     #     self, force_refresh: bool = False, now: Optional[datetime] = None
     # ) -> str:
@@ -628,6 +667,7 @@ Context from memory:
     #     return (
     #         f"{summary}\nIt is {current_time_str}.\n{self.name}'s status: {self.status}"
     #     )
+
     def __getstate__(self):
         # Return everything except the lock
         state = self.__dict__.copy()
