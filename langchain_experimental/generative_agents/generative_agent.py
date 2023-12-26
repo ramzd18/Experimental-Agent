@@ -629,7 +629,9 @@ Context from memory:
             [self.memory._format_memory_detail(o) for o in observations]
         )
         print("Length of observations"+str(len(observation_str)))
-        summary=str(self.get_summary)+ "Here are relevant memories you have related to the topic."+ str(observation_str)
+        print("Length of observations"+str(len(self.get_summary())))
+
+        summary=str(self.get_summary())+ "Here are relevant memories you have related to the topic."+ str(observation_str)
         print(len(summary))
         print(summary)
         client = OpenAI(
