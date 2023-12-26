@@ -624,7 +624,8 @@ Context from memory:
     #         return base64.b64encode(image_file.read()).decode('utf-8')
         
     def vision_test(self,api_key,img,website_context):
-        summary=str(self.get_summary)+ "Here are relevant memories you have related to the topic."+ str(self.memory.fetch_socialmedia_memories(website_context))
+        summary=str(self.get_summary)+ "Here are relevant memories you have related to the topic."+ str(self.memory.fetch_memories(website_context))
+        print(len(summary))
         client = OpenAI(
         api_key=api_key)
         headers = {
