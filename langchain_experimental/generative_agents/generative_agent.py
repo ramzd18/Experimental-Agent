@@ -626,6 +626,7 @@ Context from memory:
     def vision_test(self,api_key,img,website_context):
         summary=str(self.get_summary)+ "Here are relevant memories you have related to the topic."+ str(self.memory.fetch_memories(website_context))
         print(len(summary))
+        print(summary)
         client = OpenAI(
         api_key=api_key)
         headers = {
