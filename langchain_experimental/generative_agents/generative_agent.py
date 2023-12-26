@@ -649,7 +649,7 @@ Context from memory:
             "content": [
                 {
                 "type": "text",
-                "text": f"Here is context of the wbesite you are looking at.{website_context}.Here is a summary of yourself: {summary}. Given this picture of the website respond with wheter you want to click a button on the website or if you want to type something into a box. Respond with your anwser in a dictionary.For example if you want to click on a button named Click Here you would return button:Click Here. If you want to search somethign you would return search: What I want to search. Choose what you would like to click based on your profile, tailor it to you"
+                "text": f"Here is context of the wbesite you are looking at.{website_context}.Here is a summary of yourself: {summary}. Given this picture of the website respond with wheter you want to click a button on the website or if you want to type something into a box. Respond with your anwser in a dictionary with either button or search as they key and button name or search value as the value. For example if you wanted to click a button named Submit you would return button: Submit. Only return this value and nothing else.Choose what you would like to click based on your profile, tailor it to you"
                 },
                 {
                 "type": "image_url",
