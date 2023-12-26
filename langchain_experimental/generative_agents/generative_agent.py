@@ -628,7 +628,7 @@ Context from memory:
         observation_str = "\n".join(
             [self.memory._format_memory_detail(o) for o in observations]
         )
-        print("Length of observations"+len(observation_str))
+        print("Length of observations"+str(len(observation_str)))
         summary=str(self.get_summary)+ "Here are relevant memories you have related to the topic."+ str(observation_str)
         print(len(summary))
         print(summary)
