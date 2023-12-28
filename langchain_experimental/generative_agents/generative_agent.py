@@ -623,7 +623,7 @@ Context from memory:
     #     with open(image_path, "rb") as image_file:
     #         return base64.b64encode(image_file.read()).decode('utf-8')
         
-    def vision_test(self,api_key,img,website_context):
+    def vision_test(self,api_key,img,website_context,past_context):
         observations=self.memory.fetch_memories(website_context)
         observation_str = "\n".join(
             [self.memory._format_memory_detail(o) for o in observations]
@@ -649,7 +649,7 @@ Context from memory:
             "content": [
                 {
                 "type": "text",
-                "text": f"Here is context of the wbesite you are looking at.{website_context}.Here is a summary of yourself: {summary}. Given this picture of the website respond with wheter you want to click a button on the website or if you want to type something into a box. Respond with your anwser in a dictionary with either button or search as they key and button name or search value as the value. For example if you wanted to click a button named Submit you would return button: Submit.Use quotations. Only return this value and nothing else.Choose what you would like to click based on your profile, tailor it to you"
+                "text": f"Here is context of the wbesite you are looking at.{website_context}.Here is a summary of yourself: {summary}. Here is a list of things you have prevously searched or clicked on the website. {past_context} Given this picture of the website respond with wheter you want to click a button on the website or if you want to type something into a box. Respond with your anwser in a dictionary with either button or search as they key and button name or search value as the value. For example if you wanted to click a button named Submit you would return button: Submit.Use quotations. Only return this value and nothing else.Choose what you would like to click based on your profile, tailor it to you. Make it realistic to how your profile might use the website."
                 },
                 {
                 "type": "image_url",
