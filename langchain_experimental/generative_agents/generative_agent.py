@@ -649,9 +649,10 @@ Context from memory:
             "content": [
                 {
                 "type": "text",
-                "text": f"Here is context of the wbesite you are looking at.{website_context}.Here is a summary of yourself: {summary}. Here is a list of things you have prevously searched or clicked on the website: {past_context}."
+                "text": f"Here is context of the wbesite you are looking at.{website_context}.Here is a summary of yourself: {summary}."
                  +" Given this picture of the website respond with wheter you want to click something on the website or if you want to type something into an element. Respond with your anwser in a dictionary with either button or search as they key and object name you are clicking or search value as the value. If you want to click on image or text that you think is clickable provide the text or image caption as the clickable value in the dictionary."
-                 +"For example if you wanted to click a button named Submit you would return button: Submit. If you wanted to click a text labeled Click This you would return button: Click This. If you wanted to type 240 dollars into a box you would return search: 240 dollars. Use quotations. Only return this value and nothing else.Choose what you would like to click based on your profile, tailor it to you. Try not to repeat actions you have already done before on the website. If you see something was already clicked or search in you past activity do not repeat unless you have to."
+                 +"For example if you wanted to click a button named Submit you would return button: Submit. If you wanted to click a text labeled Click This you would return button: Click This. If you wanted to type 240 dollars into a box you would return search: 240 dollars. Use quotations. Only return this value and nothing else."
+                +f" Choose what you would like to click based on your profile, tailor it to you. Here is the past things you have searched/click on the website: {past_context}.  If you  something was already clicked or search in the past thigns you have searched/click do not return it again."
                   +" Make it realistic to how your profile might use the website."
                 },
                 {
