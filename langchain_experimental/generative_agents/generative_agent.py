@@ -649,7 +649,9 @@ Context from memory:
             "content": [
                 {
                 "type": "text",
-                "text": f"Here is context of the wbesite you are looking at.{website_context}.Here is a summary of yourself: {summary}. Here is a list of things you have prevously searched or clicked on the website. {past_context} Given this picture of the website respond with wheter you want to click a button on the website or if you want to type something into a box. Respond with your anwser in a dictionary with either button or search as they key and button name or search value as the value. For example if you wanted to click a button named Submit you would return button: Submit.Use quotations. Only return this value and nothing else.Choose what you would like to click based on your profile, tailor it to you. Try not to repeat actions you have already done before on the website. Make it realistic to how your profile might use the website."
+                "text": f"Here is context of the wbesite you are looking at.{website_context}.Here is a summary of yourself: {summary}. Here is a list of things you have prevously searched or clicked on the website: {past_context}."
+                 +" Given this picture of the website respond with wheter you want to click a button text or image on the website or if you want to type something into a box. Respond with your anwser in a dictionary with either button or search as they key and button name or search value as the value. If you want to click on image or text that you think is clickable provide the text or image caption."
+                 +"For example if you wanted to click a button named Submit you would return button: Submit.Use quotations. Only return this value and nothing else.Choose what you would like to click based on your profile, tailor it to you. Try not to repeat actions you have already done before on the website. Make it realistic to how your profile might use the website."
                 },
                 {
                 "type": "image_url",
