@@ -738,11 +738,11 @@ Context from memory:
         "max_tokens": 300
         }
         if flag2 and not flag3: 
-            response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload2)
+            response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload1)
 
             return(response.json())
         elif flag3: 
-            response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload3)
+            response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload2)
 
             return(response.json())
         else: 
