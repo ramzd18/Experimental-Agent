@@ -623,7 +623,7 @@ Context from memory:
     #     with open(image_path, "rb") as image_file:
     #         return base64.b64encode(image_file.read()).decode('utf-8')
         
-    def vision_test(self,api_key,img,website_context,past_context):
+    def vision_test(self,api_key,img,website_context,past_context, clickable_elements):
         observations=self.memory.fetch_memories(website_context)
         observation_str = "\n".join(
             [self.memory._format_memory_detail(o) for o in observations]
@@ -652,7 +652,7 @@ Context from memory:
                 "text": f"Here is context of the wbesite you are looking at.{website_context}.Here is a summary of yourself: {summary}."
                  +" Given this picture of the website respond with wheter you want to click something on the website or if you want to type something into an element. Respond with your anwser in a dictionary with either button or search as they key and object name you are clicking or search value as the value. If you want to click on image or text that you think is clickable provide the text or image caption as the clickable value in the dictionary."
                  +"For example if you wanted to click a button named Submit you would return button: Submit. If you wanted to click a text labeled Click This you would return button: Click This. If you wanted to type 240 dollars into a box you would return search: 240 dollars. Use quotations. Only return this value and nothing else."
-                 +"Sometimes it may be hard for you to identify if something is clickable. If you do not know if something is clickable but want to click it return it."
+                 +f"Sometimes it may be hard for you to identify if something is clickable. Here is a list of the clickable elements you can choose on the page to help you determine what is clickable: {clickable_elements}."
                 +f" Choose what you would like to click based on your profile, tailor it to you. Here is the past things you have searched/click on the website: {past_context}. If you  something was already clicked or search in the past thigns you have searched/click do not return it again. DO NOT REPEAT things."
                   +" Make it realistic to how your profile might use the website."
                 },
