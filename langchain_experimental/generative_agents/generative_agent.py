@@ -623,7 +623,7 @@ Context from memory:
     #     with open(image_path, "rb") as image_file:
     #         return base64.b64encode(image_file.read()).decode('utf-8')
         
-    def vision_test(self,api_key,img,website_context,past_context, clickable_elements):
+    def vision_test(self,api_key,img,img2, img3 ,flag2,flag3,website_context,past_context, clickable_elements):
         observations=self.memory.fetch_memories(website_context)
         observation_str = "\n".join(
             [self.memory._format_memory_detail(o) for o in observations]
@@ -649,7 +649,7 @@ Context from memory:
             "content": [
                 {
                 "type": "text",
-                "text": f"Here is context of the wbesite you are looking at.{website_context}.Here is a summary of yourself: {summary}."
+                "text": f"Here is context of the website you are looking at.{website_context}.Here is a summary of yourself: {summary}."
                  +" Given this picture of the website respond with wheter you want to click something on the website or if you want to type something into an element. Respond with your anwser in a dictionary with either button or search as they key and object name you are clicking or search value as the value. If you want to click on image or text that you think is clickable provide the text or image caption as the clickable value in the dictionary."
                  +"For example if you wanted to click a button named Submit you would return button: Submit. If you wanted to click a text labeled Click This you would return button: Click This. If you wanted to type 240 dollars into a box you would return search: 240 dollars. Use quotations. Only return this value and nothing else."
                  +f"Sometimes it may be hard for you to identify if something is clickable. Here is a list of the clickable elements you can choose on the page to help you determine what is clickable: {clickable_elements}. You may not see some of these elements in the screensot. If you want to choose an element in the list and is not in the picture do not pick it. Only pick what you can see."
@@ -667,10 +667,88 @@ Context from memory:
         ],
         "max_tokens": 300
         }
+        payload1={  "model": "gpt-4-vision-preview",
+        "messages": [
+            {
+            "role": "user",
+            "content": [
+                {
+                "type": "text",
+                "text": f"Here is context of the website you are looking at.{website_context}.Here is a summary of yourself: {summary}."
+                 +" Given these sets of pictures of the website respond with wheter you want to click something on the website or if you want to type something into an element. Respond with your anwser in a dictionary with either button or search as they key and object name you are clicking or search value as the value. If you want to click on image or text that you think is clickable provide the text or image caption as the clickable value in the dictionary."
+                 +"For example if you wanted to click a button named Submit you would return button: Submit. If you wanted to click a text labeled Click This you would return button: Click This. If you wanted to type 240 dollars into a box you would return search: 240 dollars. Use quotations. Only return this value and nothing else."
+                 +f"Sometimes it may be hard for you to identify if something is clickable. Here is a list of the clickable elements you can choose on the page to help you determine what is clickable: {clickable_elements}. You may not see some of these elements in the screensot. If you want to choose an element in the list and is not in the picture do not pick it. Only pick what you can see."
+                +f" Here is the past things you have searched/click on the website: {past_context}. If you  something was already clicked or search in the past thigns you have searched/click do not return it again. DO NOT REPEAT things. For example if you clicked a buttonn called Best Clothes Here, do not pick that button again if you have choose it recently. This will cause issues by causing you to go in circles."
+                  +" Make it realistic to how your profile might use the website."
+                },
+                {
+                "type": "image_url",
+                "image_url": {
+                    "url": f"data:image/jpeg;base64,{img}"
+                }
+                },
+                 {
+                "type": "image_url",
+                "image_url": {
+                    "url": f"data:image/jpeg;base64,{img2}"
+                }
+                }
 
-        response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)
+            ]
+            }
+        ],
+        "max_tokens": 300
+        }
+        payload2={  "model": "gpt-4-vision-preview",
+        "messages": [
+            {
+            "role": "user",
+            "content": [
+                {
+                "type": "text",
+                "text": f"Here is context of the website you are looking at.{website_context}.Here is a summary of yourself: {summary}."
+                 +" Given these sets of pictures of the website respond with wheter you want to click something on the website or if you want to type something into an element. Respond with your anwser in a dictionary with either button or search as they key and object name you are clicking or search value as the value. If you want to click on image or text that you think is clickable provide the text or image caption as the clickable value in the dictionary."
+                 +"For example if you wanted to click a button named Submit you would return button: Submit. If you wanted to click a text labeled Click This you would return button: Click This. If you wanted to type 240 dollars into a box you would return search: 240 dollars. Use quotations. Only return this value and nothing else."
+                 +f"Sometimes it may be hard for you to identify if something is clickable. Here is a list of the clickable elements you can choose on the page to help you determine what is clickable: {clickable_elements}. You may not see some of these elements in the screensot. If you want to choose an element in the list and is not in the picture do not pick it. Only pick what you can see."
+                +f" Here is the past things you have searched/click on the website: {past_context}. If you  something was already clicked or search in the past thigns you have searched/click do not return it again. DO NOT REPEAT things. For example if you clicked a buttonn called Best Clothes Here, do not pick that button again if you have choose it recently. This will cause issues by causing you to go in circles."
+                  +" Make it realistic to how your profile might use the website."
+                },
+                {
+                "type": "image_url",
+                "image_url": {
+                    "url": f"data:image/jpeg;base64,{img}"
+                }
+                },
+                 {
+                "type": "image_url",
+                "image_url": {
+                    "url": f"data:image/jpeg;base64,{img2}"
+                }
+                },
+                    {
+                "type": "image_url",
+                "image_url": {
+                    "url": f"data:image/jpeg;base64,{img3}"
+                }
+                },
 
-        return(response.json())
+            ]
+            }
+        ],
+        "max_tokens": 300
+        }
+        if flag2 and not flag3: 
+            response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload2)
+
+            return(response.json())
+        elif flag3: 
+            response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload3)
+
+            return(response.json())
+        else: 
+            response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)
+
+            return(response.json())
     # def get_full_header(
     #     self, force_refresh: bool = False, now: Optional[datetime] = None
     # ) -> str:
