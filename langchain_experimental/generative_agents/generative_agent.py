@@ -516,7 +516,7 @@ Context from memory:
             " Imagine that you are {name}. Given this generate a list of memories {name} would remember based on reading these articles. Write the memories from the perspective of {name}. Make sure they are personalized memories. "
             "Write as many memories as you can. Seperate the memories with a semicolon."
             "For example, if the person we were reading an article about basketball shoes, and the person enjoyed playing basketball a memory coud be I played countless games of pick up basketball with my friends and tried jumping so hard my shoe broke."
-            "Avoid using works like I remember or I recall or I am feeling. and instead state the memory directly and include extremely specific details in the memory so they are not broad or general. Be as creative as you can be. Let the memories be unique and use the articles and the persons profile to make the most realistic human like memories possible."
+            "Avoid using works like I remember or I recall or I am feeling. and instead state the memory directly and include extremely specific details in the memory so they are not broad or general. Be as creative as you can be. Let the memories be unique and use the articles and the persons profile to make the most realistic human like memories possible. Do not just reuse the information from the articles. Think about how they might have applied to you and your life and make sure you are unqiue to the person."
             "Here is an example format memory1;memory2;memory3;memory4;memory5;memory6 and so on"
         )
             soc_mem=self.summarize_related_memories(str(list))
