@@ -430,25 +430,32 @@ Context from memory:
         )
         result= self.chain(prompt).run(**kwargs).strip()
         return result
-    def memoriesprompt(self,mems,now: Optional[datetime]=None):
+    def memoriesprompt(self,skills,mems, now: Optional[datetime]=None):
         prompt = PromptTemplate.from_template(
-            "I am trying to rebuild a persons memory. I have soem of their memories and information and I want to rebuild it with the information. Use the following information to generate additional memories for this person.I do not want sufrace level memories but rather deep, detailed memories core to the person."
+            "I am trying to rebuild a persons memory. I have some information about them and what they posted on social media. Here is the information."
+            +"name:"
             "{agent_summary_description}"
             # + "\n{agent_name}'s status: {agent_status}"
-            +"\n {agent_name}'s interests:"
-            + "\nAll of  {agent_name}'s current memories:"
+            +"\n {agent_name}'s skills:"
+            +"{skills}"
+            + "\nSome of  {agent_name}'s relevant social media posts:"
             + "\n{relevant_memories}"
-            + "\n\n"
-            +"\n Use the following information to generate a comprehensive list of additional memories the person may have to bolster the information we have on them. The memories {agent_name} already contains are limited and  I want you to produce more memories to make the information about {agent_name} more complete. Generate the memories with extensive detail. Seperate each memory with a semicolon.Example format: mem1;mem2;mem3;mem4 ..."
+            + "Here are the existing memories we have of {agent_name}"
+            +"{memories}"
+            + "\n"
+            +"\n Use the following information to generate a list of 40 additional memories for the person to bolster the information we have on them. The memories {agent_name} already contains are limited and  I want you to produce more memories to make the information about {agent_name} more complete. Write them from perspective of {agent_name}. Use personal pronouns."
+            +"Generate the memories with extensive detail. They should be able to fill out {agent_name}'s life and make our information about them more relevant. Seperate each memory with a semicolon.Example format: mem1;mem2;mem3;mem4 ..."
             # + suffix
         )
     
         # agent_summary_description = self.get_summary(now=now)
-        relevant_memories_str = mems
+        relevant_memories_str = self.memory.fetch_socialmedia_memories(self.interests)
         kwargs: Dict[str, Any] = dict(
-            agent_summary_description=self.education_and_work+ "    "+ self.interests,
+            agent_summary_description=self.education_and_work+ "\n"+"Interests:" + self.interests,
             relevant_memories=relevant_memories_str,
             agent_name= self.name,
+            skills=skills,
+            memories=mems,
         )
         result= self.chain(prompt).run(**kwargs)
         return result
