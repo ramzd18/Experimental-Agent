@@ -64,6 +64,11 @@ class GenerativeAgent(BaseModel):
         return LLMChain(
             llm=llm1, prompt=prompt, verbose=self.verbose, memory=self.memory
         )
+    def chain2(self, prompt: PromptTemplate) -> LLMChain:
+        llm1 = ChatOpenAI(model_name='gpt-4',temperature=0.6)
+        return LLMChain(
+            llm=llm1, prompt=prompt, verbose=self.verbose, memory=self.memory
+        )
     def _get_entity_from_observation(self, observation: str) -> str:
         prompt = PromptTemplate.from_template(
             "What is the observed entity in the following observation? {observation}"
@@ -336,7 +341,7 @@ Context from memory:
             +" Anwser the following question from {agent_name} perspective. Make sure the response is personalized to you and not something you would imagine everyone says. Make it unique to you. Only include relevant information that anwsers the question and make the response concise with only information that directly anwsers the question."
             +"Make the response as human like as possible and personable. Anwser directly as {agent_name} and use personal pronouns. Make sure your anwser is consistent with your responses previosuly in the interview but do not repeat information."
             +"Do not just have a positive response when asked questions. You can anwser NO and say you do not like something or a product when asked about your opinion. Make your opinion known. If you would not like a product the company is asking about you can say that."
-            +"Make sure the response is unique to you and something you believe you would say. Do not just give the most common anwser but anwser what makes sense to you and your profile."
+            +"Make sure the response is unique to you and something you believe you would say. Do not just give the most common anwser but anwser what makes sense to you and your profile. Incorporate your relevant memories and provide a unique response that represents you. DO NOT JUST GIVE A COMMON ANWSER YOU THINK EVERYONE WOULD SAY."
             +"Be consice and do not include irrelevant questions. Anwser the question directly and that is it. Do not give a long-winded response that is not related."
             + "\n\n"
             # + suffix
@@ -364,7 +369,7 @@ Context from memory:
 
             # agent_status=self.status,
         )
-        result= self.chain1(prompt).run(**kwargs).strip()
+        result= self.chain2(prompt).run(**kwargs).strip()
         self.memory.add_memory(result)
         return result
     
