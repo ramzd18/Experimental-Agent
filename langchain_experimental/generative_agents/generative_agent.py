@@ -483,10 +483,10 @@ Context from memory:
         )
         result= self.chain(prompt).run(**kwargs).strip()
         return result
-    def analysis_of_product(self,list_of_text):
+    def analysis_of_product(self,list_of_text,description):
         total_len= len(list_of_text)
-        iter= total_len//10
-        if (total_len<9): 
+        iter= total_len//8
+        if (total_len<7): 
             iter=1
         begin=0
         end=iter
@@ -494,7 +494,7 @@ Context from memory:
         while(end<total_len-1): 
             sublist= list_of_text[begin:end]
             resultque=queue.Queue()
-            task_thread = threading.Thread(target=self.memoryfunc, args=(sublist,resultque))
+            task_thread = threading.Thread(target=self.memoryfunc, args=(sublist,resultque,description))
             task_thread.start()
             task_thread.join(timeout=20)
             if task_thread.is_alive():
@@ -587,7 +587,7 @@ Context from memory:
             "Here is an example format memory1;memory2;memory3;memory4;memory5;memory6 and so on"
         )
             soc_mem=self.summarize_related_memories(str(list))
-            result =self.chain1(prompt).run(observation_str=str(list),name=self.name,social_str=soc_mem,summary=self.get_summary(),interests=str(self.interests),status=self.status)
+            result =self.chain1(prompt).run(observation_str=str(list),name=self.name,social_str=soc_mem,summary=self.get_summary(),interests=str(self.interests),status=self.status,description=description)
             result=result.split(";")
             print(result) 
             resultque.put(result)
