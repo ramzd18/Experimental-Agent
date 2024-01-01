@@ -564,19 +564,24 @@ Context from memory:
         result= self.chain1(prompt).run(**kwargs)
         return result
 
-    def memoryfunc(self,list,resultque): 
+    def memoryfunc(self,list,resultque,description): 
             prompt = PromptTemplate.from_template(
-            "Here is a list of summarized articles {name} searched up on the internet. "
+            "I was given a description of a person. Here is the description: {description}"
+            +"I am making an ai replica of this person and thier name is {name}"
+           + "Here is a list of summarized articles {name} searched up on the internet relating to the description that was inputted of them. "
             "{observation_str}\n"
             "---\n"
-            "Here are a summary of {name}'s relevent social media interactions towards the topics of these articles:"
+            "This description likely depicts a specific thing or problem this person embodies and I am trying to generate relevant memories for this person regarding the description using what I already know about them. Here is the information I already know: "
+            "Here are a summary of {name}'s relevent memories towards the topics of these articles:"
             "{social_str}\n"
             "---\n"
             "Here is a summary of {name}: {summary}"
-            "Here are {name}'s interests: {interests} \n"
+            # "Here are {name}'s interests: {interests} \n"
             #  "{name}'s current status: {status} \n"
+            ""
             " Imagine that you are {name}. Given this generate a list of memories {name} would remember based on reading these articles. Write the memories from the perspective of {name}. Make sure they are personalized memories. "
             "Write as many memories as you can. Seperate the memories with a semicolon."
+            "MAKE SURE THESE MEMORIES ABOUT THE ARTICLE. Make it so these memories relate directly to the description that was inputted and recreate this person's memories about the topic. I am trying to recreate as many realistic memories about the topic of the description as possible."
             "For example, if the person we were reading an article about basketball shoes, and the person enjoyed playing basketball a memory coud be I played countless games of pick up basketball with my friends and tried jumping so hard my shoe broke."
             "Avoid using works like I remember or I recall or I am feeling. and instead state the memory directly and include extremely specific details in the memory so they are not broad or general. Be as creative as you can be. Let the memories be unique and use the articles and the persons profile to make the most realistic human like memories possible. Do not just reuse the information from the articles. Think about how they might have applied to you and your life and make sure you are unqiue to the person."
             "Here is an example format memory1;memory2;memory3;memory4;memory5;memory6 and so on"
