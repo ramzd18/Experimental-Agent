@@ -444,6 +444,7 @@ Context from memory:
             +"{memories}"
             + "\n"
             +"\n Use the following information to generate a list of 40 additional memories for the person to bolster the information we have on them. The memories {agent_name} already contains are limited and  I want you to produce more memories to make the information about {agent_name} more complete. Write them from perspective of {agent_name}. Use personal pronouns."
+            +"Do not give basic memroies stating that you remember doing something. Give memories with extensive detail that will help build a more complete profile. For example a bad memory would be: I remember the first time I walked into school. A good memory woudl be: The first day of college I had to move in, but I was not prepared to set up my room and live with my unknown roomate."
             +"Generate the memories with extensive detail. They should be able to fill out {agent_name}'s life and make our information about them more relevant. Seperate each memory with a semicolon.Example format: mem1;mem2;mem3;mem4 ..."
             # + suffix
         )
