@@ -457,7 +457,7 @@ Context from memory:
             skills=skills,
             memories=mems,
         )
-        result= self.chain(prompt).run(**kwargs)
+        result= self.chain2(prompt).run(**kwargs)
         return result
     def memoriespromptkeyword(self,mems,keyword,now: Optional[datetime]=None):
         prompt = PromptTemplate.from_template(
