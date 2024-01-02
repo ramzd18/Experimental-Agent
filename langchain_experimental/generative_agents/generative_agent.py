@@ -494,7 +494,7 @@ Context from memory:
         while(end<total_len-1): 
             sublist= list_of_text[begin:end]
             resultque=queue.Queue()
-            task_thread = threading.Thread(target=self.memoryfunc, args=(sublist,resultque,description))
+            task_thread = threading.Thread(target=self.memoryfunc, args=(sublist,resultque,description,str(totallist)))
             task_thread.start()
             task_thread.join(timeout=20)
             if task_thread.is_alive():
@@ -564,7 +564,7 @@ Context from memory:
         result= self.chain1(prompt).run(**kwargs)
         return result
 
-    def memoryfunc(self,list,resultque,description): 
+    def memoryfunc(self,list,resultque,description,pastmems): 
             prompt = PromptTemplate.from_template(
             "I was given a description of a person. Here is the description: {description}"
             +"I am making an ai replica of this person and thier name is {name}"
@@ -574,20 +574,21 @@ Context from memory:
             "This description likely depicts a specific thing or problem this person embodies and I am trying to generate relevant memories for this person regarding the description using what I already know about them. Here is the information I already know: "
             "Here are a summary of {name}'s relevent memories towards the topics of these articles:"
             "{social_str}\n"
+            "{past_mems}"
             "---\n"
             "Here is a summary of {name}: {summary}"
             # "Here are {name}'s interests: {interests} \n"
             #  "{name}'s current status: {status} \n"
             ""
             " Imagine that you are {name}. Given this generate a list of memories {name} would remember based on reading these articles. Write the memories from the perspective of {name}. Make sure they are personalized memories. "
-            "Write as many memories as you can. Seperate the memories with a semicolon."
+            "Write as many memories as you can. Seperate the memories with a semicolon.Do not repeat existing memories the person has had. You can build on existing ones but make sure they are distinct and each one helps builds a complete profile of this person for this topic."
             "MAKE SURE THESE MEMORIES ABOUT THE ARTICLE. Make it so these memories relate directly to the description that was inputted and recreate this person's memories about the topic. I am trying to recreate as many realistic memories about the topic of the description as possible."
             "For example, if the person we were reading an article about basketball shoes, and the person enjoyed playing basketball a memory coud be I played countless games of pick up basketball with my friends and tried jumping so hard my shoe broke."
             "Avoid using works like I remember or I recall or I am feeling. and instead state the memory directly and include extremely specific details in the memory so they are not broad or general. Be as creative as you can be. Let the memories be unique and use the articles and the persons profile to make the most realistic human like memories possible. Do not just reuse the information from the articles. Think about how they might have applied to you and your life and make sure you are unqiue to the person."
             "Here is an example format memory1;memory2;memory3;memory4;memory5;memory6 and so on"
         )
             soc_mem=self.summarize_related_memories(str(list))
-            result =self.chain1(prompt).run(observation_str=str(list),name=self.name,social_str=soc_mem,summary=self.get_summary(),interests=str(self.interests),status=self.status,description=description)
+            result =self.chain1(prompt).run(observation_str=str(list),name=self.name,social_str=soc_mem,summary=self.get_summary(),interests=str(self.interests),status=self.status,description=description,past_mems=pastmems)
             result=result.split(";")
             print(result) 
             resultque.put(result)
