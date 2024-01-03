@@ -198,10 +198,11 @@ Context from memory:
             "{summary}"
             " Here ia a description of the person that was inputted: {description}"
             "This description likely details a problem or general persona a person fits under."
-            "Given theis relevant information from a persons memories, what are twelve relevant things you think they would search up to fit the desciprtion that was inputted. \n"
+            "Given this relevant information from a persons memories, what are twelve relevant things you think they would search up to fit the desciprtion that was inputted. \n"
             "Tailor the questions so you are covering what products this persons may use to solve their problems/ fit their persona.For example if the person inputted description of a person struggling to mantain personal finances, you might look up different budgeting products online, their pros/and cons, the basics of maintaining budget, and other relevant things to help you be more knowledagble about the topic."
             " Make sure the questions relate to {description}."
-            "Seperate each thing you want to learn with ;."
+            "MAKE SURE YOU GENERATE 12 QUESTIONS."
+            "Seperate each question with ;."
         )
         summary=self.get_summary()
         result = self.chain(prompt).run(name=self.name,summary=summary,description=description)
