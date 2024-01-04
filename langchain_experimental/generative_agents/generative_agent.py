@@ -69,6 +69,12 @@ class GenerativeAgent(BaseModel):
         return LLMChain(
             llm=llm1, prompt=prompt, verbose=self.verbose, memory=self.memory
         )
+    def chain3(self, prompt: PromptTemplate) -> LLMChain:
+        llm1 = ChatOpenAI(model_name='gpt-3.5-turbo',temperature=0.5)
+        return LLMChain(
+            llm=llm1, prompt=prompt, verbose=self.verbose, memory=self.memory
+        )
+    
     def _get_entity_from_observation(self, observation: str) -> str:
         prompt = PromptTemplate.from_template(
             "What is the observed entity in the following observation? {observation}"
@@ -372,7 +378,7 @@ Context from memory:
 
             # agent_status=self.status,
         )
-        result= self.chain2(prompt).run(**kwargs).strip()
+        result= self.chain3(prompt).run(**kwargs).strip()
         self.memory.add_memory(result)
         return result
     
@@ -462,7 +468,7 @@ Context from memory:
             skills=skills,
             memories=mems,
         )
-        result= self.chain2(prompt).run(**kwargs)
+        result= self.chain3(prompt).run(**kwargs)
         return result
     def memoriespromptkeyword(self,mems,keyword,now: Optional[datetime]=None):
         prompt = PromptTemplate.from_template(
@@ -591,7 +597,7 @@ Context from memory:
             "Here is an example format memory1;memory2;memory3;memory4;memory5;memory6 and so on"
         )
             soc_mem=self.summarize_related_memories(str(list))
-            result =self.chain1(prompt).run(observation_str=str(list),name=self.name,social_str=soc_mem,summary=self.get_summary(),interests=str(self.interests),status=self.status,description=description,past_mems=pastmems)
+            result =self.chain3(prompt).run(observation_str=str(list),name=self.name,social_str=soc_mem,summary=self.get_summary(),interests=str(self.interests),status=self.status,description=description,past_mems=pastmems)
             result=result.split(";")
             print(result) 
             resultque.put(result)
