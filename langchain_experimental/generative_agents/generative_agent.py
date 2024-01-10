@@ -65,12 +65,12 @@ class GenerativeAgent(BaseModel):
             llm=llm1, prompt=prompt, verbose=self.verbose, memory=self.memory
         )
     def chain2(self, prompt: PromptTemplate) -> LLMChain:
-        llm1 = ChatOpenAI(model_name='gpt-4',temperature=0.9)
+        llm1 = ChatOpenAI(model_name='gpt-4',temperature=0.8)
         return LLMChain(
             llm=llm1, prompt=prompt, verbose=self.verbose, memory=self.memory
         )
     def chain3(self, prompt: PromptTemplate) -> LLMChain:
-        llm1 = ChatOpenAI(model_name='gpt-3.5-turbo-1106',temperature=0.5)
+        llm1 = ChatOpenAI(model_name='gpt-4-1106-preview',temperature=0.6)
         return LLMChain(
             llm=llm1, prompt=prompt, verbose=self.verbose, memory=self.memory
         )
@@ -378,7 +378,7 @@ Context from memory:
 
             # agent_status=self.status,
         )
-        result= self.chain3(prompt).run(**kwargs).strip()
+        result= self.chain2(prompt).run(**kwargs).strip()
         self.memory.add_memory(result)
         return result
     
