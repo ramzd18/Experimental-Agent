@@ -786,7 +786,8 @@ Context from memory:
             "role": "user",
             "content": [
                 {
-                   "text": f"Here is context of the website you are looking at.{website_context}.Here is a summary of yourself: {summary}."
+                  "type": "text",
+           "text": f"Here is context of the website you are looking at.{website_context}.Here is a summary of yourself: {summary}."
                  +" Given these sets of pictures of the website respond with wheter you want to click something on the website or if you want to type something into an element. Respond with your anwser in a dictionary with either button or search as they key and object name you are clicking or search value as the value. If you want to click on image or text that you think is clickable provide the text or image caption as the clickable value in the dictionary."
                  +"For example if you wanted to click a button named Submit you would return button: Submit. If you wanted to click a text labeled Click This you would return button: Click This. If you wanted to type 240 dollars into a box you would return search: 240 dollars. Use quotations. Only return this value and nothing else."
                  +f"Sometimes it may be hard for you to identify if something is clickable. Here is a list of the clickable elements you can choose on the page to help you determine what is clickable: {clickable_elements}. You may not see some of these elements in the screensot. If you want to choose an element in the list and is not in the picture do not pick it. Only pick what you can see."
