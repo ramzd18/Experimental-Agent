@@ -997,7 +997,7 @@ Only return a dictionary and nothing else other than they keys mentioned above. 
             }
         ],
         "max_tokens": 300,
-        "temperature": .9
+        "temperature": .5
         }
         if flag2 and not flag3: 
             response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload1)
