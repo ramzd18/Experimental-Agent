@@ -818,8 +818,8 @@ You are going to either choose if you want to click an element or search somethi
 Interaction:
 Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here.
 Action Format:
-For clicks, return button: [item name]. Example: button: Submit
-For typing, return search: [search value]. Example: search: 240 dollars
+For clicks, you should this key value pair to the dict you will eventually return button: [item name]. Example: button: Submit
+For typing, you shoudl add this key value pair to the dict you will eventurally return return search: [search value]. Example: search: 240 dollars
 Note: Only interact with elements visible in the screenshot.
 Past Interactions:
 Avoid repeating past actions. Here is a list of what you have previosly clicked: {past_context} for history.
@@ -834,7 +834,12 @@ Personal Relevance: Reflect on how the website meets your persona's needs and ex
 Improvement Suggestions: Offer constructive suggestions for improvement.
 Focus on how well the website is being able to facilitate how well you can perform the tasks you want to.
 Example Feedback:
-The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping."""
+The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping.
+Return Value: 
+Here is what you should return. You shoudl return a dict with what you want to click/searh and feedback. They keys should be either button/search and feedback.
+Example return:
+button: Submit, feedback: your feedback here. 
+"""
                 },
                 {
                 "type": "image_url",
@@ -867,8 +872,8 @@ You are going to either choose if you want to click an element or search somethi
 Interaction:
 Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here.
 Action Format:
-For clicks, return button: [item name]. Example: button: Submit
-For typing, return search: [search value]. Example: search: 240 dollars
+For clicks, you should this key value pair to the dict you will eventually return button: [item name]. Example: button: Submit
+For typing, you shoudl add this key value pair to the dict you will eventurally return return search: [search value]. Example: search: 240 dollars
 Note: Only interact with elements visible in the screenshot.
 Past Interactions:
 Avoid repeating past actions. Here is a list of what you have previosly clicked: {past_context} for history.
@@ -883,7 +888,12 @@ Personal Relevance: Reflect on how the website meets your persona's needs and ex
 Improvement Suggestions: Offer constructive suggestions for improvement.
 Focus on how well the website is being able to facilitate how well you can perform the tasks you want to.
 Example Feedback:
-The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping."""
+The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping.
+Return Value: 
+Here is what you should return. You shoudl return a dict with what you want to click/searh and feedback. They keys should be either button/search and feedback.
+Example return:
+button: Submit, feedback: your feedback here. 
+"""
                 },
                 {
                 "type": "image_url",
@@ -923,8 +933,8 @@ You are going to either choose if you want to click an element or search somethi
 Interaction:
 Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here.
 Action Format:
-For clicks, return button: [item name]. Example: button: Submit
-For typing, return search: [search value]. Example: search: 240 dollars
+For clicks, you should this key value pair to the dict you will eventually return button: [item name]. Example: button: Submit
+For typing, you shoudl add this key value pair to the dict you will eventurally return return search: [search value]. Example: search: 240 dollars
 Note: Only interact with elements visible in the screenshot.
 Past Interactions:
 Avoid repeating past actions. Here is a list of what you have previosly clicked: {past_context} for history.
@@ -939,7 +949,12 @@ Personal Relevance: Reflect on how the website meets your persona's needs and ex
 Improvement Suggestions: Offer constructive suggestions for improvement.
 Focus on how well the website is being able to facilitate how well you can perform the tasks you want to.
 Example Feedback:
-The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping."""
+The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping.
+Return Value: 
+Here is what you should return. You shoudl return a dict with what you want to click/searh and feedback. They keys should be either button/search and feedback.
+Example return:
+button: Submit, feedback: your feedback here. 
+"""
                 },
                 {
                 "type": "image_url",
