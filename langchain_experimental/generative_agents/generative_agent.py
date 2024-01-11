@@ -816,7 +816,7 @@ Here is a Summary of yourself including what you want out of the website: {summa
 Task Instructions:
 You are going to either choose if you want to click an element or search something up based on the elments in the screenshot.
 Interaction:
-Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here.
+Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here. Be aware there may be some elements here that are not visible. Only pick what is visible.
 Action Format:
 For clicks, you should this key value pair to the dict you will eventually return button: [item name]. Example: button: Submit
 For typing, you shoudl add this key value pair to the dict you will eventurally return return search: [search value]. Example: search: 240 dollars
@@ -824,6 +824,8 @@ Note: Only interact with elements visible in the screenshot.
 Past Interactions:
 Avoid repeating past actions. Here is a list of what you have previosly clicked: {past_context} for history.
 Focus on unique elements unless repetition is necessary.
+Warnings:
+Be aware of popups. If you see you will probably need to hit the button to exit or get out of the popup. Click the necessary element to keep progressing through the website.
 
 Feedback Guidelines
 Provide specific and impactful feedback based on your interaction:
@@ -870,7 +872,7 @@ Here is a Summary of yourself including what you want out of the website: {summa
 Task Instructions:
 You are going to either choose if you want to click an element or search something up based on the elments in the screenshot.
 Interaction:
-Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here.
+Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here. Be aware there may be some elements here that are not visible. Only pick what is visible.
 Action Format:
 For clicks, you should this key value pair to the dict you will eventually return button: [item name]. Example: button: Submit
 For typing, you shoudl add this key value pair to the dict you will eventurally return return search: [search value]. Example: search: 240 dollars
@@ -878,6 +880,8 @@ Note: Only interact with elements visible in the screenshot.
 Past Interactions:
 Avoid repeating past actions. Here is a list of what you have previosly clicked: {past_context} for history.
 Focus on unique elements unless repetition is necessary.
+Warnings:
+Be aware of popups. If you see you will probably need to hit the button to exit or get out of the popup. Click the necessary element to keep progressing through the website.
 
 Feedback Guidelines
 Provide specific and impactful feedback based on your interaction:
@@ -931,7 +935,7 @@ Here is a Summary of yourself including what you want out of the website: {summa
 Task Instructions:
 You are going to either choose if you want to click an element or search something up based on the elments in the screenshot.
 Interaction:
-Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here.
+Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here. Be aware there may be some elements here that are not visible. Only pick what is visible.
 Action Format:
 For clicks, you should this key value pair to the dict you will eventually return button: [item name]. Example: button: Submit
 For typing, you shoudl add this key value pair to the dict you will eventurally return return search: [search value]. Example: search: 240 dollars
@@ -939,6 +943,8 @@ Note: Only interact with elements visible in the screenshot.
 Past Interactions:
 Avoid repeating past actions. Here is a list of what you have previosly clicked: {past_context} for history.
 Focus on unique elements unless repetition is necessary.
+Warnings:
+Be aware of popups. If you see you will probably need to hit the button to exit or get out of the popup. Click the necessary element to keep progressing through the website.
 
 Feedback Guidelines
 Provide specific and impactful feedback based on your interaction:
