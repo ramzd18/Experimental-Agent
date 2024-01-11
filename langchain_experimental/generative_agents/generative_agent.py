@@ -835,9 +835,11 @@ Content and Usability: Comment on the page's layout, information presentation, a
 Design and Functionality: Note any design aspects or functionalities that enhance or hinder the experience.
 Personal Relevance: Reflect on how the website meets your persona's needs and expectations.
 Improvement Suggestions: Offer constructive suggestions for improvement.
-Focus on how well the website is being able to facilitate how well you can perform the tasks you want to.
+Focus on how well the website is being able to facilitate how well you can perform the tasks you want to. Only provide feedback on what you can see. Be careful when providing feedback. Talk about what you might be confused by and what you like and be aware that you may have not interacted with certain features yet. 
+Do not overdo feedback. Do not say your are confused by something if you are not. Provide accurate feedback that will be helpful for the company. Only provide relevant feedback that will prodivde some value and directly relates to what you are interacting with.
 Example Feedback:
 The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping.
+
 Return Value: 
 Here is what you should return. You shoudl return a dict with what you want to click/searh and feedback. They keys should be either button/search and feedback.
 Example return:
@@ -893,9 +895,11 @@ Content and Usability: Comment on the page's layout, information presentation, a
 Design and Functionality: Note any design aspects or functionalities that enhance or hinder the experience.
 Personal Relevance: Reflect on how the website meets your persona's needs and expectations.
 Improvement Suggestions: Offer constructive suggestions for improvement.
-Focus on how well the website is being able to facilitate how well you can perform the tasks you want to.
+Focus on how well the website is being able to facilitate how well you can perform the tasks you want to. Only provide feedback on what you can see. Be careful when providing feedback. Talk about what you might be confused by and what you like and be aware that you may have not interacted with certain features yet. 
+Do not overdo feedback. Do not say your are confused by something if you are not. Provide accurate feedback that will be helpful for the company. Only provide relevant feedback that will prodivde some value and directly relates to what you are interacting with.
 Example Feedback:
 The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping.
+
 Return Value: 
 Here is what you should return. You shoudl return a dict with what you want to click/searh and feedback. They keys should be either button/search and feedback.
 Example return:
@@ -958,9 +962,11 @@ Content and Usability: Comment on the page's layout, information presentation, a
 Design and Functionality: Note any design aspects or functionalities that enhance or hinder the experience.
 Personal Relevance: Reflect on how the website meets your persona's needs and expectations.
 Improvement Suggestions: Offer constructive suggestions for improvement.
-Focus on how well the website is being able to facilitate how well you can perform the tasks you want to.
+Focus on how well the website is being able to facilitate how well you can perform the tasks you want to. Only provide feedback on what you can see. Be careful when providing feedback. Talk about what you might be confused by and what you like and be aware that you may have not interacted with certain features yet. 
+Do not overdo feedback. Do not say your are confused by something if you are not. Provide accurate feedback that will be helpful for the company. Only provide relevant feedback that will prodivde some value and directly relates to what you are interacting with.
 Example Feedback:
 The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping.
+
 Return Value: 
 Here is what you should return. You shoudl return a dict with what you want to click/searh and feedback. They keys should be either button/search and feedback.
 Example return:
