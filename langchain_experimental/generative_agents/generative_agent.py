@@ -846,7 +846,7 @@ Return Value:
 Here is what you should return. You shoudl return a dict with what you want to click/searh and feedback. They keys should be either button/search and feedback.
 Example return:
 button: Submit, feedback: your feedback here. 
-Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary.
+Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary. The dictionary should have the keys button/search and feedback. Make sure you are return dictionary formatting. IF you do return dictionary formatting it will fail.
 """
                 },
                 {
@@ -908,7 +908,7 @@ Return Value:
 Here is what you should return. You shoudl return a dict with what you want to click/searh and feedback. They keys should be either button/search and feedback.
 Example return:
 button: Submit, feedback: your feedback here. 
-Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary.
+Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary. The dictionary should have the keys button/search and feedback. Make sure you are return dictionary formatting. IF you do return dictionary formatting it will fail.
 """
                 },
                 {
@@ -977,7 +977,7 @@ Return Value:
 Here is what you should return. You shoudl return a dict with what you want to click/searh and feedback. They keys should be either button/search and feedback.
 Example return:
 button: Submit, feedback: your feedback here. 
-Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary.
+Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary. The dictionary should have the keys button/search and feedback. Make sure you are return dictionary formatting. IF you do return dictionary formatting it will fail.
 """
                 },
                 {
