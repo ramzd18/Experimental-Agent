@@ -729,6 +729,55 @@ Context from memory:
     # def encode_image(image_path):
     #     with open(image_path, "rb") as image_file:
     #         return base64.b64encode(image_file.read()).decode('utf-8')
+
+
+
+
+# savedprompt=           "text": f"Here is context of the website you are looking at.{website_context}.Here is a summary of yourself: {summary}."
+#                  +"Use this summmary of yourself and specially your response about what you want from this website and what specifically you would want to use it for to guide your responses."
+#                  +" Given these sets of pictures of the website respond with wheter you want to click something on the website or if you want to type something into an element. Respond with your anwser in a dictionary with either button or search as they key and object name you are clicking or search value as the value. If you want to click on image or text that you think is clickable provide the text or image caption as the clickable value in the dictionary."
+#                  +"For example if you wanted to click a button named Submit you would return button: Submit. If you wanted to click a text labeled Click This you would return button: Click This. If you wanted to type 240 dollars into a box you would return search: 240 dollars. Use quotations. Only return this value and nothing else."
+#                  +f"Sometimes it may be hard for you to identify if something is clickable. Here is a list of the clickable elements you can choose on the page to help you determine what is clickable: {clickable_elements}. You may not see some of these elements in the screensot. If you want to choose an element in the list and is not in the picture do not pick it. Only pick what you can see."
+#                  +"Be aware of popups. You may need to click a specific button to get to the actual page. In this case chose the button or exit out of the popup."
+#                 +f" Here is the past things you have searched/click on the website: {past_context}. If you  something was already clicked or search in the past thigns you have searched/click do not return it again. DO NOT REPEAT things. For example if you clicked a buttonn called Best Clothes Here, do not pick that button again if you have choose it recently. This will cause issues by causing you to go in circles."
+#                 +"PICK UNIQUE ELEMENTS THAT ARE NOT FOUND IN YOUR PAST THINGS UNLESS NECESSARY. DO not be afraid to search things up do not only rely on button quicks. You should be emulating hwo someone is actually using this platform so make it realistic."
+#                   +" Make it realistic to how your profile might use the website. In the dictionary you are returning I also want you to return one other value. Add the key feedback in the dictionary and as a value put what you thought of the pages you are seeing. Wheter you like what you see, if they are intuitive and what could be changed about the page to make it better for you. So for example you might have feedback: The information presented does not line up with what I thought. I expected that all the posts would be centralized but I have to click to get posts about a specific topic which takes a lot of time.Make the feedback about what you see currently and what information is being shwon to you. Be specific and tailor to it what you would specifically want changed."
+#                   +"For the feedback be aware that you might not click or see features immediately so try to only give feedback on what can you see. THink about why you might use this product and what you want out of it and how it is living up to your expectations. Highlight anything that is potentially confusing or diffucult to understand. Avoid general feedback like the design is ver intuivtive and easy to understand. Go into specific details and highlight how specific parts are affecting your user experience. Be specific and highlight your journey."
+#                   +"For the feedback be aware of popups. If you see a popup only comment on the popup and not the main content. When you provide feedback make sure you look at everything in the image. Do not say you wish there was a feature if it is present in the main content becaause you may have not seen it. Think about what you would like the most on your user journey and what specifically you think would improve your experience and make the software better."
+#                   +"Make the feedback important imapctful information that would help people improve the website you are looking at. Go beyond basic feedback. Talk about deep details, quality of information, usabillity and thinks of this nature that will help improve the website. Think about potential replacements to your criticism and how it would effect your experience, highlight this."
+#                   +"Add this to dictionary you are returning."
+
+
+#     example_prompt=f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback.
+
+# Website Context
+# Context: {website_context}
+# \n
+# Your Persona
+# Here is a Summary of yourself including what you want out of the website: {summary}
+# \n
+# Task Instructions:
+# You are going to either choose if you want to click an element or search something up based on the elments in the screenshot.
+# Interaction:
+# Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here.
+# Action Format:
+# For clicks, return button: [item name]. Example: button: Submit
+# For typing, return search: [search value]. Example: search: 240 dollars
+# Note: Only interact with elements visible in the screenshot.
+# Past Interactions:
+# Avoid repeating past actions. Here is a list of what you have previosly clicked: {past_context} for history.
+# Focus on unique elements unless repetition is necessary.
+
+# Feedback Guidelines
+# Provide specific and impactful feedback based on your interaction:
+
+# Content and Usability: Comment on the page's layout, information presentation, and ease of use.
+# Design and Functionality: Note any design aspects or functionalities that enhance or hinder the experience.
+# Personal Relevance: Reflect on how the website meets your persona's needs and expectations.
+# Improvement Suggestions: Offer constructive suggestions for improvement.
+# Focus on how well the website is being able to facilitate how well you can perform the tasks you want to.
+# Example Feedback:
+# The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping."""
         
     def vision_test(self,api_key,img,img2, img3 ,flag2,flag3,website_context,past_context, clickable_elements,user_contect):
         observations=self.memory.fetch_memories(website_context)
@@ -756,19 +805,36 @@ Context from memory:
             "content": [
                 {
                "type": "text",
-                 "text": f"Here is context of the website you are looking at.{website_context}.Here is a summary of yourself: {summary}."
-                 +"Use this summmary of yourself and specially your response about what you want from this website and what specifically you would want to use it for to guide your responses."
-                 +" Given these sets of pictures of the website respond with wheter you want to click something on the website or if you want to type something into an element. Respond with your anwser in a dictionary with either button or search as they key and object name you are clicking or search value as the value. If you want to click on image or text that you think is clickable provide the text or image caption as the clickable value in the dictionary."
-                 +"For example if you wanted to click a button named Submit you would return button: Submit. If you wanted to click a text labeled Click This you would return button: Click This. If you wanted to type 240 dollars into a box you would return search: 240 dollars. Use quotations. Only return this value and nothing else."
-                 +f"Sometimes it may be hard for you to identify if something is clickable. Here is a list of the clickable elements you can choose on the page to help you determine what is clickable: {clickable_elements}. You may not see some of these elements in the screensot. If you want to choose an element in the list and is not in the picture do not pick it. Only pick what you can see."
-                 +"Be aware of popups. You may need to click a specific button to get to the actual page. In this case chose the button or exit out of the popup."
-                +f" Here is the past things you have searched/click on the website: {past_context}. If you  something was already clicked or search in the past thigns you have searched/click do not return it again. DO NOT REPEAT things. For example if you clicked a buttonn called Best Clothes Here, do not pick that button again if you have choose it recently. This will cause issues by causing you to go in circles."
-                +"PICK UNIQUE ELEMENTS THAT ARE NOT FOUND IN YOUR PAST THINGS UNLESS NECESSARY. DO not be afraid to search things up do not only rely on button quicks. You should be emulating hwo someone is actually using this platform so make it realistic."
-                  +" Make it realistic to how your profile might use the website. In the dictionary you are returning I also want you to return one other value. Add the key feedback in the dictionary and as a value put what you thought of the pages you are seeing. Wheter you like what you see, if they are intuitive and what could be changed about the page to make it better for you. So for example you might have feedback: The information presented does not line up with what I thought. I expected that all the posts would be centralized but I have to click to get posts about a specific topic which takes a lot of time.Make the feedback about what you see currently and what information is being shwon to you. Be specific and tailor to it what you would specifically want changed."
-                  +"For the feedback be aware that you might not click or see features immediately so try to only give feedback on what can you see. THink about why you might use this product and what you want out of it and how it is living up to your expectations. Highlight anything that is potentially confusing or diffucult to understand. Avoid general feedback like the design is ver intuivtive and easy to understand. Go into specific details and highlight how specific parts are affecting your user experience. Be specific and highlight your journey."
-                  +"For the feedback be aware of popups. If you see a popup only comment on the popup and not the main content. When you provide feedback make sure you look at everything in the image. Do not say you wish there was a feature if it is present in the main content becaause you may have not seen it. Think about what you would like the most on your user journey and what specifically you think would improve your experience and make the software better."
-                  +"Make the feedback important imapctful information that would help people improve the website you are looking at. Go beyond basic feedback. Talk about deep details, quality of information, usabillity and thinks of this nature that will help improve the website. Think about potential replacements to your criticism and how it would effect your experience, highlight this."
-                  +"Add this to dictionary you are returning."
+                 "text": f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback.
+
+Website Context
+Context: {website_context}
+\n
+Your Persona
+Here is a Summary of yourself including what you want out of the website: {summary}
+\n
+Task Instructions:
+You are going to either choose if you want to click an element or search something up based on the elments in the screenshot.
+Interaction:
+Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here.
+Action Format:
+For clicks, return button: [item name]. Example: button: Submit
+For typing, return search: [search value]. Example: search: 240 dollars
+Note: Only interact with elements visible in the screenshot.
+Past Interactions:
+Avoid repeating past actions. Here is a list of what you have previosly clicked: {past_context} for history.
+Focus on unique elements unless repetition is necessary.
+
+Feedback Guidelines
+Provide specific and impactful feedback based on your interaction:
+
+Content and Usability: Comment on the page's layout, information presentation, and ease of use.
+Design and Functionality: Note any design aspects or functionalities that enhance or hinder the experience.
+Personal Relevance: Reflect on how the website meets your persona's needs and expectations.
+Improvement Suggestions: Offer constructive suggestions for improvement.
+Focus on how well the website is being able to facilitate how well you can perform the tasks you want to.
+Example Feedback:
+The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping."""
                 },
                 {
                 "type": "image_url",
@@ -788,19 +854,36 @@ Context from memory:
             "content": [
                 {
                   "type": "text",
-           "text": f"Here is context of the website you are looking at.{website_context}.Here is a summary of yourself: {summary}."
-           +"Use this summmary of yourself and specially your response about what you want from this website and what specifically you would want to use it for to guide your responses."
-                 +" Given these sets of pictures of the website respond with wheter you want to click something on the website or if you want to type something into an element. Respond with your anwser in a dictionary with either button or search as they key and object name you are clicking or search value as the value. If you want to click on image or text that you think is clickable provide the text or image caption as the clickable value in the dictionary."
-                 +"For example if you wanted to click a button named Submit you would return button: Submit. If you wanted to click a text labeled Click This you would return button: Click This. If you wanted to type 240 dollars into a box you would return search: 240 dollars. Use quotations. Only return this value and nothing else."
-                 +f"Sometimes it may be hard for you to identify if something is clickable. Here is a list of the clickable elements you can choose on the page to help you determine what is clickable: {clickable_elements}. You may not see some of these elements in the screensot. If you want to choose an element in the list and is not in the picture do not pick it. Only pick what you can see."
-                 +"Be aware of popups. You may need to click a specific button to get to the actual page. In this case chose the button or exit out of the popup."
-                +f" Here is the past things you have searched/click on the website: {past_context}. If you  something was already clicked or search in the past thigns you have searched/click do not return it again. DO NOT REPEAT things. For example if you clicked a buttonn called Best Clothes Here, do not pick that button again if you have choose it recently. This will cause issues by causing you to go in circles."
-                +"PICK UNIQUE ELEMENTS THAT ARE NOT FOUND IN YOUR PAST THINGS UNLESS NECESSARY. DO not be afraid to search things up do not only rely on button quicks. You should be emulating hwo someone is actually using this platform so make it realistic."
-                  +" Make it realistic to how your profile might use the website. In the dictionary you are returning I also want you to return one other value. Add the key feedback in the dictionary and as a value put what you thought of the pages you are seeing. Wheter you like what you see, if they are intuitive and what could be changed about the page to make it better for you. Make the feedback about what you see currently and what information is being shwon to you. Be specific and tailor to it what you would specifically want changed."
-                  +"For the feedback be aware that you might not click or see features immediately so try to only give feedback on what can you see. THink about why you might use this product and what you want out of it and how it is living up to your expectations. Highlight anything that is potentially confusing or diffucult to understand. Avoid general feedback like the design is ver intuivtive and easy to understand. Go into specific details and highlight how specific parts are affecting your user experience. Be specific and highlight your journey."
-                  +"For the feedback be aware of popups. If you see a popup only comment on the popup and not the main content. When you provide feedback make sure you look at everything in the image. Do not say you wish there was a feature if it is present in the main content becaause you may have not seen it. Think about what you would like the most on your user journey and what specifically you think would improve your experience and make the software better."
-                  +"Make the feedback important imapctful information that would help people improve the website you are looking at. Go beyond basic feedback. Talk about deep details, quality of information, usabillity and thinks of this nature that will help improve the website. Think about potential replacements to your criticism and how it would effect your experience, highlight this. Highlight what changes you believe would made your experience better."
-                  +"Add this to dictionary you are returning."
+           "text":f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback.
+
+Website Context
+Context: {website_context}
+\n
+Your Persona
+Here is a Summary of yourself including what you want out of the website: {summary}
+\n
+Task Instructions:
+You are going to either choose if you want to click an element or search something up based on the elments in the screenshot.
+Interaction:
+Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here.
+Action Format:
+For clicks, return button: [item name]. Example: button: Submit
+For typing, return search: [search value]. Example: search: 240 dollars
+Note: Only interact with elements visible in the screenshot.
+Past Interactions:
+Avoid repeating past actions. Here is a list of what you have previosly clicked: {past_context} for history.
+Focus on unique elements unless repetition is necessary.
+
+Feedback Guidelines
+Provide specific and impactful feedback based on your interaction:
+
+Content and Usability: Comment on the page's layout, information presentation, and ease of use.
+Design and Functionality: Note any design aspects or functionalities that enhance or hinder the experience.
+Personal Relevance: Reflect on how the website meets your persona's needs and expectations.
+Improvement Suggestions: Offer constructive suggestions for improvement.
+Focus on how well the website is being able to facilitate how well you can perform the tasks you want to.
+Example Feedback:
+The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping."""
                 },
                 {
                 "type": "image_url",
@@ -827,19 +910,36 @@ Context from memory:
             "content": [
            {
                 "type": "text",
-                  "text": f"Here is context of the website you are looking at.{website_context}.Here is a summary of yourself: {summary}."
-           +"Use this summmary of yourself and specially your response about what you want from this website and what specifically you would want to use it for to guide your responses."
-                 +" Given these sets of pictures of the website respond with wheter you want to click something on the website or if you want to type something into an element. Respond with your anwser in a dictionary with either button or search as they key and object name you are clicking or search value as the value. If you want to click on image or text that you think is clickable provide the text or image caption as the clickable value in the dictionary."
-                 +"For example if you wanted to click a button named Submit you would return button: Submit. If you wanted to click a text labeled Click This you would return button: Click This. If you wanted to type 240 dollars into a box you would return search: 240 dollars. Use quotations. Only return this value and nothing else."
-                 +f"Sometimes it may be hard for you to identify if something is clickable. Here is a list of the clickable elements you can choose on the page to help you determine what is clickable: {clickable_elements}. You may not see some of these elements in the screensot. If you want to choose an element in the list and is not in the picture do not pick it. Only pick what you can see."
-                 +"Be aware of popups. You may need to click a specific button to get to the actual page. In this case chose the button or exit out of the popup."
-                +f" Here is the past things you have searched/click on the website: {past_context}. If you  something was already clicked or search in the past thigns you have searched/click do not return it again. DO NOT REPEAT things. For example if you clicked a buttonn called Best Clothes Here, do not pick that button again if you have choose it recently. This will cause issues by causing you to go in circles."
-                +"PICK UNIQUE ELEMENTS THAT ARE NOT FOUND IN YOUR PAST THINGS UNLESS NECESSARY. DO not be afraid to search things up do not only rely on button quicks. You should be emulating hwo someone is actually using this platform so make it realistic."
-                  +" Make it realistic to how your profile might use the website. In the dictionary you are returning I also want you to return one other value. Add the key feedback in the dictionary and as a value put what you thought of the pages you are seeing. Wheter you like what you see, if they are intuitive and what could be changed about the page to make it better for you. Make the feedback about what you see currently and what information is being shwon to you. Be specific and tailor to it what you would specifically want changed."
-                  +"For the feedback be aware that you might not click or see features immediately so try to only give feedback on what can you see. THink about why you might use this product and what you want out of it and how it is living up to your expectations. Highlight anything that is potentially confusing or diffucult to understand. Avoid general feedback like the design is ver intuivtive and easy to understand. Go into specific details and highlight how specific parts are affecting your user experience. Be specific and highlight your journey."
-                  +"For the feedback be aware of popups. If you see a popup only comment on the popup and not the main content. When you provide feedback make sure you look at everything in the image. Do not say you wish there was a feature if it is present in the main content becaause you may have not seen it. Think about what you would like the most on your user journey and what specifically you think would improve your experience and make the software better."
-                  +"Make the feedback important imapctful information that would help people improve the website you are looking at. Go beyond basic feedback. Talk about deep details, quality of information, usabillity and thinks of this nature that will help improve the website. Think about potential replacements to your criticism and how it would effect your experience, highlight this. Highlight what changes you believe would made your experience better."
-                  +"Add this to dictionary you are returning."
+                  "text": f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback.
+
+Website Context
+Context: {website_context}
+\n
+Your Persona
+Here is a Summary of yourself including what you want out of the website: {summary}
+\n
+Task Instructions:
+You are going to either choose if you want to click an element or search something up based on the elments in the screenshot.
+Interaction:
+Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here.
+Action Format:
+For clicks, return button: [item name]. Example: button: Submit
+For typing, return search: [search value]. Example: search: 240 dollars
+Note: Only interact with elements visible in the screenshot.
+Past Interactions:
+Avoid repeating past actions. Here is a list of what you have previosly clicked: {past_context} for history.
+Focus on unique elements unless repetition is necessary.
+
+Feedback Guidelines
+Provide specific and impactful feedback based on your interaction:
+
+Content and Usability: Comment on the page's layout, information presentation, and ease of use.
+Design and Functionality: Note any design aspects or functionalities that enhance or hinder the experience.
+Personal Relevance: Reflect on how the website meets your persona's needs and expectations.
+Improvement Suggestions: Offer constructive suggestions for improvement.
+Focus on how well the website is being able to facilitate how well you can perform the tasks you want to.
+Example Feedback:
+The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping."""
                 },
                 {
                 "type": "image_url",
