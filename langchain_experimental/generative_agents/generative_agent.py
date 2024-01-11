@@ -816,7 +816,7 @@ Here is a Summary of yourself including what you want out of the website: {summa
 Task Instructions:
 You are going to either choose if you want to click an element or search something up based on the elments in the screenshot.
 Interaction:
-Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here. Be aware there may be some elements here that are not visible. Only pick what is visible. DO not pick an element that is not visible on the screenshot. This will not work. Only click what you can see.
+Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here. Be aware there may be some elements here that are not visible. Only pick what is visible. DO not pick an element that is not visible on the screenshot. This will not work. Only click what you can see. If you see something on clickable elements but it is not in the screenshot do not pick it.
 Action Format:
 For clicks, you should this key value pair to the dict you will eventually return button: [item name]. Example: button: Submit
 For typing, you shoudl add this key value pair to the dict you will eventurally return return search: [search value]. Example: search: 240 dollars
@@ -876,7 +876,7 @@ Here is a Summary of yourself including what you want out of the website: {summa
 Task Instructions:
 You are going to either choose if you want to click an element or search something up based on the elments in the screenshot.
 Interaction:
-Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here. Be aware there may be some elements here that are not visible. Only pick what is visible. DO not pick an element that is not visible on the screenshot. This will not work. Only click what you can see.
+Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here. Be aware there may be some elements here that are not visible. Only pick what is visible. DO not pick an element that is not visible on the screenshot. This will not work. Only click what you can see. If you see something on clickable elements but it is not in the screenshot do not pick it.
 Action Format:
 For clicks, you should this key value pair to the dict you will eventually return button: [item name]. Example: button: Submit
 For typing, you shoudl add this key value pair to the dict you will eventurally return return search: [search value]. Example: search: 240 dollars
@@ -943,7 +943,7 @@ Here is a Summary of yourself including what you want out of the website: {summa
 Task Instructions:
 You are going to either choose if you want to click an element or search something up based on the elments in the screenshot.
 Interaction:
-Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here. Be aware there may be some elements here that are not visible. Only pick what is visible. DO not pick an element that is not visible on the screenshot. This will not work. Only click what you can see.
+Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here. Be aware there may be some elements here that are not visible. Only pick what is visible. DO not pick an element that is not visible on the screenshot. This will not work. Only click what you can see. If you see something on clickable elements but it is not in the screenshot do not pick it.
 Action Format:
 For clicks, you should this key value pair to the dict you will eventually return button: [item name]. Example: button: Submit
 For typing, you shoudl add this key value pair to the dict you will eventurally return return search: [search value]. Example: search: 240 dollars
