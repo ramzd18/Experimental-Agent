@@ -787,7 +787,7 @@ Context from memory:
         print("Length of observations"+str(len(observation_str)))
         print("Length of observations"+str(len(self.get_summary())))
 
-        summary=str(self.get_summary())+ "Here is what you said previously you would want to desire this software: \n."+ str(user_contect)
+        summary=str(self.get_summary())
         print(len(summary))
         print(summary)
         client = OpenAI(
@@ -813,16 +813,22 @@ Context: {website_context}
 Your Persona
 Here is a Summary of yourself including what you want out of the website: {summary}
 \n
+Task Information: 
+Here is the specific task you said you wanted to complete on this website: {user_contect}. Use this information to guide what you will do on the website.
+
 Task Instructions:
 You are going to either choose if you want to click an element or search something up based on the elments in the screenshot.
 Interaction:
 Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here. Be aware there may be some elements here that are not visible. Only pick what is visible. DO not pick an element that is not visible on the screenshot. This will not work. Only click what you can see. If you see something on clickable elements but it is not in the screenshot do not pick it.
+
 Action Format:
 For clicks, you should this key value pair to the dict you will eventually return button: [item name]. Example: button: Submit
 For typing, you shoudl add this key value pair to the dict you will eventurally return return search: [search value]. Example: search: 240 dollars
 Note: Only interact with elements visible in the screenshot.
+
 Past Interactions:
-Avoid repeating past actions. Here is a list of what you have previosly clicked: {past_context} for history.
+Avoid repeating past actions. Here is a list of what you have previosly clicked along with reasoning for why you clicked each value: {past_context} for history.
+
 Focus on unique elements unless repetition is necessary.
 
 Warnings:
@@ -842,11 +848,15 @@ Do not overdo feedback. Do not say your are confused by something if you are not
 Example Feedback:
 The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping.
 
+Reasoning: 
+Provide reasoning for why you are clicking/searching the specific value you choose. Focus on why you believe it will advance the task you want to complete on the website.
+
+
 Return Value: 
-Here is what you should return. You shoudl return a dict with what you want to click/searh and feedback. They keys should be either button/search and feedback.
+Here is what you should return. You should return a dict with what you want to click/searh, feedback, and reasoning. They keys should be either button/search and feedback.
 Example return:
-button: Submit, feedback: your feedback here. 
-Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary. The dictionary should have the keys button/search and feedback. Make sure you are return dictionary formatting. IF you do return dictionary formatting it will fail.
+button: Submit, feedback: your feedback here, reasoning: your reasoning here. 
+Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary. The dictionary should have the keys button/search, feedback, and reasoning. Make sure you are return dictionary formatting. IF you do return dictionary formatting it will fail.
 """
                 },
                 {
@@ -875,16 +885,22 @@ Context: {website_context}
 Your Persona
 Here is a Summary of yourself including what you want out of the website: {summary}
 \n
+Task Information: 
+Here is the specific task you said you wanted to complete on this website: {user_contect}. Use this information to guide what you will do on the website.
+
 Task Instructions:
 You are going to either choose if you want to click an element or search something up based on the elments in the screenshot.
 Interaction:
 Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here. Be aware there may be some elements here that are not visible. Only pick what is visible. DO not pick an element that is not visible on the screenshot. This will not work. Only click what you can see. If you see something on clickable elements but it is not in the screenshot do not pick it.
+
 Action Format:
 For clicks, you should this key value pair to the dict you will eventually return button: [item name]. Example: button: Submit
 For typing, you shoudl add this key value pair to the dict you will eventurally return return search: [search value]. Example: search: 240 dollars
 Note: Only interact with elements visible in the screenshot.
+
 Past Interactions:
-Avoid repeating past actions. Here is a list of what you have previosly clicked: {past_context} for history.
+Avoid repeating past actions. Here is a list of what you have previosly clicked along with reasoning for why you clicked each value: {past_context} for history.
+
 Focus on unique elements unless repetition is necessary.
 
 Warnings:
@@ -904,11 +920,15 @@ Do not overdo feedback. Do not say your are confused by something if you are not
 Example Feedback:
 The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping.
 
+Reasoning: 
+Provide reasoning for why you are clicking/searching the specific value you choose. Focus on why you believe it will advance the task you want to complete on the website.
+
+
 Return Value: 
-Here is what you should return. You shoudl return a dict with what you want to click/searh and feedback. They keys should be either button/search and feedback.
+Here is what you should return. You should return a dict with what you want to click/searh, feedback, and reasoning. They keys should be either button/search and feedback.
 Example return:
-button: Submit, feedback: your feedback here. 
-Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary. The dictionary should have the keys button/search and feedback. Make sure you are return dictionary formatting. IF you do return dictionary formatting it will fail.
+button: Submit, feedback: your feedback here, reasoning: your reasoning here. 
+Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary. The dictionary should have the keys button/search, feedback, and reasoning. Make sure you are return dictionary formatting. IF you do return dictionary formatting it will fail.
 """
                 },
                 {
@@ -944,16 +964,22 @@ Context: {website_context}
 Your Persona
 Here is a Summary of yourself including what you want out of the website: {summary}
 \n
+Task Information: 
+Here is the specific task you said you wanted to complete on this website: {user_contect}. Use this information to guide what you will do on the website.
+
 Task Instructions:
 You are going to either choose if you want to click an element or search something up based on the elments in the screenshot.
 Interaction:
 Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here. Be aware there may be some elements here that are not visible. Only pick what is visible. DO not pick an element that is not visible on the screenshot. This will not work. Only click what you can see. If you see something on clickable elements but it is not in the screenshot do not pick it.
+
 Action Format:
 For clicks, you should this key value pair to the dict you will eventually return button: [item name]. Example: button: Submit
 For typing, you shoudl add this key value pair to the dict you will eventurally return return search: [search value]. Example: search: 240 dollars
 Note: Only interact with elements visible in the screenshot.
+
 Past Interactions:
-Avoid repeating past actions. Here is a list of what you have previosly clicked: {past_context} for history.
+Avoid repeating past actions. Here is a list of what you have previosly clicked along with reasoning for why you clicked each value: {past_context} for history.
+
 Focus on unique elements unless repetition is necessary.
 
 Warnings:
@@ -973,11 +999,15 @@ Do not overdo feedback. Do not say your are confused by something if you are not
 Example Feedback:
 The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping.
 
+Reasoning: 
+Provide reasoning for why you are clicking/searching the specific value you choose. Focus on why you believe it will advance the task you want to complete on the website.
+
+
 Return Value: 
-Here is what you should return. You shoudl return a dict with what you want to click/searh and feedback. They keys should be either button/search and feedback.
+Here is what you should return. You should return a dict with what you want to click/searh, feedback, and reasoning. They keys should be either button/search and feedback.
 Example return:
-button: Submit, feedback: your feedback here. 
-Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary. The dictionary should have the keys button/search and feedback. Make sure you are return dictionary formatting. IF you do return dictionary formatting it will fail.
+button: Submit, feedback: your feedback here, reasoning: your reasoning here. 
+Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary. The dictionary should have the keys button/search, feedback, and reasoning. Make sure you are return dictionary formatting. IF you do return dictionary formatting it will fail.
 """
                 },
                 {
