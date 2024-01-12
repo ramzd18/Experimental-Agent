@@ -1007,7 +1007,9 @@ Return Value:
 Here is what you should return. You should return a dict with what you want to click/searh, feedback, and reasoning. They keys should be either button/search and feedback.
 Example return:
 button: Submit, feedback: your feedback here, reasoning: your reasoning here. These are the keys and values you should be returning the dictionary you are returning.
+MAKE SURE YOU RETURN A PYTHON DICT.
 Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary. The dictionary should have the keys button/search, feedback, and reasoning. Make sure you are return dictionary formatting. IF you do return dictionary formatting it will fail.
+YOU SHOULD BE RETURNING A DICT AND ONLY A DICT
 """
                 },
                 {
