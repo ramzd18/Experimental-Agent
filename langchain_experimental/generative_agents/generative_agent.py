@@ -814,7 +814,7 @@ Your Persona
 Here is a Summary of yourself including what you want out of the website: {summary}
 \n
 Task Information: 
-Here is the specific task you said you wanted to complete on this website: {user_contect}. Use this information to guide what you will do on the website.
+Here is the specific task you said you wanted to complete on this website: {user_contect}. Use this information to guide what you will do on the website. Your goal is to complete this task as quickly as possible. So efficiently navigate the website and choose what to do based on what will help you most efficiently reach your goal.
 
 Task Instructions:
 You are going to either choose if you want to click an element or search something up based on the elments in the screenshot.
@@ -887,7 +887,7 @@ Your Persona
 Here is a Summary of yourself including what you want out of the website: {summary}
 \n
 Task Information: 
-Here is the specific task you said you wanted to complete on this website: {user_contect}. Use this information to guide what you will do on the website.
+Here is the specific task you said you wanted to complete on this website: {user_contect}. Use this information to guide what you will do on the website. Your goal is to complete this task as quickly as possible. So efficiently navigate the website and choose what to do based on what will help you most efficiently reach your goal.
 
 Task Instructions:
 You are going to either choose if you want to click an element or search something up based on the elments in the screenshot.
@@ -967,7 +967,7 @@ Your Persona
 Here is a Summary of yourself including what you want out of the website: {summary}
 \n
 Task Information: 
-Here is the specific task you said you wanted to complete on this website: {user_contect}. Use this information to guide what you will do on the website.
+Here is the specific task you said you wanted to complete on this website: {user_contect}. Use this information to guide what you will do on the website. Your goal is to complete this task as quickly as possible. So efficiently navigate the website and choose what to do based on what will help you most efficiently reach your goal.
 
 Task Instructions:
 You are going to either choose if you want to click an element or search something up based on the elments in the screenshot.
