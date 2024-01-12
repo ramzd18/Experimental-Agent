@@ -805,7 +805,7 @@ Context from memory:
             "content": [
                 {
                "type": "text",
-                 "text": f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback.
+                 "text": f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback. You will be returning a dict in the end so keep this in mind.
 
 Website Context
 Context: {website_context}
@@ -855,7 +855,7 @@ Provide reasoning for why you are clicking/searching the specific value you choo
 Return Value: 
 Here is what you should return. You should return a dict with what you want to click/searh, feedback, and reasoning. They keys should be either button/search and feedback.
 Example return:
-button: Submit, feedback: your feedback here, reasoning: your reasoning here. 
+button: Submit, feedback: your feedback here, reasoning: your reasoning here. These are the keys and values you should be returning the dictionary you are returning.
 Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary. The dictionary should have the keys button/search, feedback, and reasoning. Make sure you are return dictionary formatting. IF you do return dictionary formatting it will fail.
 """
                 },
@@ -877,7 +877,7 @@ Only return a dictionary and nothing else other than they keys mentioned above. 
             "content": [
                 {
                   "type": "text",
-           "text":f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback.
+           "text": f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback. You will be returning a dict in the end so keep this in mind.
 
 Website Context
 Context: {website_context}
@@ -927,7 +927,7 @@ Provide reasoning for why you are clicking/searching the specific value you choo
 Return Value: 
 Here is what you should return. You should return a dict with what you want to click/searh, feedback, and reasoning. They keys should be either button/search and feedback.
 Example return:
-button: Submit, feedback: your feedback here, reasoning: your reasoning here. 
+button: Submit, feedback: your feedback here, reasoning: your reasoning here. These are the keys and values you should be returning the dictionary you are returning.
 Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary. The dictionary should have the keys button/search, feedback, and reasoning. Make sure you are return dictionary formatting. IF you do return dictionary formatting it will fail.
 """
                 },
@@ -956,7 +956,7 @@ Only return a dictionary and nothing else other than they keys mentioned above. 
             "content": [
            {
                 "type": "text",
-                  "text": f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback.
+                  "text":  f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback. You will be returning a dict in the end so keep this in mind.
 
 Website Context
 Context: {website_context}
@@ -1006,7 +1006,7 @@ Provide reasoning for why you are clicking/searching the specific value you choo
 Return Value: 
 Here is what you should return. You should return a dict with what you want to click/searh, feedback, and reasoning. They keys should be either button/search and feedback.
 Example return:
-button: Submit, feedback: your feedback here, reasoning: your reasoning here. 
+button: Submit, feedback: your feedback here, reasoning: your reasoning here. These are the keys and values you should be returning the dictionary you are returning.
 Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary. The dictionary should have the keys button/search, feedback, and reasoning. Make sure you are return dictionary formatting. IF you do return dictionary formatting it will fail.
 """
                 },
