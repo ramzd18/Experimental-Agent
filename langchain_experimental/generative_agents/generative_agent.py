@@ -831,7 +831,7 @@ For scrolling be aware you might want to scroll if there is information that you
 Past Interactions:
 Avoid repeating past actions(except scrolling). Here is a list of what you have previosly clicked along with reasoning for why you clicked each value: {past_context} for history.
 
-Focus on unique elements unless repetition is necessary.
+Focus on unique elements unless repetition is necessary. Use the past_context to inform your next decision. If you saw the previously clicked something on the website build on that to complete your task. Use the past_context as a guide to inform your next decision. They should be building blocks to your final goal.
 
 Warnings:
 Be aware of popups. If you see a popup you will probably need to hit the button to exit or get out of the popup. Click the necessary element to keep progressing through the website. If you do not you will just be stuck on the popup.
@@ -880,7 +880,7 @@ Only return a dictionary and nothing else other than they keys mentioned above. 
             "content": [
                 {
                   "type": "text",
-           "text":  f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback. You will be returning a dict in the end so keep this in mind.
+           "text":   f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback. You will be returning a dict in the end so keep this in mind.
 
 Website Context
 Context: {website_context}
@@ -906,7 +906,7 @@ For scrolling be aware you might want to scroll if there is information that you
 Past Interactions:
 Avoid repeating past actions(except scrolling). Here is a list of what you have previosly clicked along with reasoning for why you clicked each value: {past_context} for history.
 
-Focus on unique elements unless repetition is necessary.
+Focus on unique elements unless repetition is necessary. Use the past_context to inform your next decision. If you saw the previously clicked something on the website build on that to complete your task. Use the past_context as a guide to inform your next decision. They should be building blocks to your final goal.
 
 Warnings:
 Be aware of popups. If you see a popup you will probably need to hit the button to exit or get out of the popup. Click the necessary element to keep progressing through the website. If you do not you will just be stuck on the popup.
@@ -962,7 +962,7 @@ Only return a dictionary and nothing else other than they keys mentioned above. 
             "content": [
            {
                 "type": "text",
-                  "text":   f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback. You will be returning a dict in the end so keep this in mind.
+                  "text":    f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback. You will be returning a dict in the end so keep this in mind.
 
 Website Context
 Context: {website_context}
@@ -988,7 +988,7 @@ For scrolling be aware you might want to scroll if there is information that you
 Past Interactions:
 Avoid repeating past actions(except scrolling). Here is a list of what you have previosly clicked along with reasoning for why you clicked each value: {past_context} for history.
 
-Focus on unique elements unless repetition is necessary.
+Focus on unique elements unless repetition is necessary. Use the past_context to inform your next decision. If you saw the previously clicked something on the website build on that to complete your task. Use the past_context as a guide to inform your next decision. They should be building blocks to your final goal.
 
 Warnings:
 Be aware of popups. If you see a popup you will probably need to hit the button to exit or get out of the popup. Click the necessary element to keep progressing through the website. If you do not you will just be stuck on the popup.
