@@ -779,7 +779,7 @@ Context from memory:
 # Example Feedback:
 # The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping."""
         
-    def vision_test(self,api_key,img,img2, img3 ,flag2,flag3,website_context,past_context, clickable_elements,user_contect):
+    def vision_test(self,api_key,img,img2, img3 ,flag2,flag3,website_context,past_context, clickable_elements,user_contect,searchable_elements):
         observations=self.memory.fetch_memories(website_context)
         observation_str = "\n".join(
             [self.memory._format_memory_detail(o) for o in observations]
@@ -820,10 +820,10 @@ Task Instructions:
 You are going to either choose if you want to click an element or search something up or scroll down, based on the elments in the screenshot.
 Interaction:
 Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here. Be aware there may be some elements here that are not visible. Only pick what is visible. DO not pick an element that is not visible on the screenshot. This will not work. Only click what you can see. If you see something on clickable elements but it is not in the screenshot do not pick it.
-
+Searchable Elements: Here is a list of all the searchable elements placeholder texts: {searchable_elements}. Some search elements might not have placeholder text so if this list is empty but you clearly see a searchable elements still return what you want to search with empty placeholder text. Try to choose a placeholder text if you are searching something up though.
 Action Format:
 For clicks, you should this key value pair to the dict you will eventually return button: [item name]. Example: button: Submit
-For typing, you should add this key value pair to the dict you will eventurally return return search: [search value]. Example: search: 240 dollars
+For typing, you should add this key value pair to the dict you will eventurally return return search: [placeholder text: search value]. Example: search: placeholder text: 240 dollars
 For scrolling down you will eventually return scroll: down. Example: scroll[down]
 Note: Only interact with elements visible in the screenshot. Be careful when searching values up. Sometimes you have to click in the element before searching something up. If there is a searchbar with placeholder text check if it is in the clickable elements first before returning search. If it is in clickable elements and you have not clicked it then click it before searching. Be aware that the placeholder text is the text in the searchbar. 
 For scrolling be aware you might want to scroll if there is information that you need that may be located more down.
@@ -895,10 +895,10 @@ Task Instructions:
 You are going to either choose if you want to click an element or search something up or scroll down, based on the elments in the screenshot.
 Interaction:
 Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here. Be aware there may be some elements here that are not visible. Only pick what is visible. DO not pick an element that is not visible on the screenshot. This will not work. Only click what you can see. If you see something on clickable elements but it is not in the screenshot do not pick it.
-
+Searchable Elements: Here is a list of all the searchable elements placeholder texts: {searchable_elements}. Some search elements might not have placeholder text so if this list is empty but you clearly see a searchable elements still return what you want to search with empty placeholder text. Try to choose a placeholder text if you are searching something up though.
 Action Format:
 For clicks, you should this key value pair to the dict you will eventually return button: [item name]. Example: button: Submit
-For typing, you should add this key value pair to the dict you will eventurally return return search: [search value]. Example: search: 240 dollars
+For typing, you should add this key value pair to the dict you will eventurally return return search: [placeholder text: search value]. Example: search: placeholder text: 240 dollars
 For scrolling down you will eventually return scroll: down. Example: scroll[down]
 Note: Only interact with elements visible in the screenshot. Be careful when searching values up. Sometimes you have to click in the element before searching something up. If there is a searchbar with placeholder text check if it is in the clickable elements first before returning search. If it is in clickable elements and you have not clicked it then click it before searching. Be aware that the placeholder text is the text in the searchbar. 
 For scrolling be aware you might want to scroll if there is information that you need that may be located more down.
@@ -977,10 +977,10 @@ Task Instructions:
 You are going to either choose if you want to click an element or search something up or scroll down, based on the elments in the screenshot.
 Interaction:
 Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here. Be aware there may be some elements here that are not visible. Only pick what is visible. DO not pick an element that is not visible on the screenshot. This will not work. Only click what you can see. If you see something on clickable elements but it is not in the screenshot do not pick it.
-
+Searchable Elements: Here is a list of all the searchable elements placeholder texts: {searchable_elements}. Some search elements might not have placeholder text so if this list is empty but you clearly see a searchable elements still return what you want to search with empty placeholder text. Try to choose a placeholder text if you are searching something up though.
 Action Format:
 For clicks, you should this key value pair to the dict you will eventually return button: [item name]. Example: button: Submit
-For typing, you should add this key value pair to the dict you will eventurally return return search: [search value]. Example: search: 240 dollars
+For typing, you should add this key value pair to the dict you will eventurally return return search: [placeholder text: search value]. Example: search: placeholder text: 240 dollars
 For scrolling down you will eventually return scroll: down. Example: scroll[down]
 Note: Only interact with elements visible in the screenshot. Be careful when searching values up. Sometimes you have to click in the element before searching something up. If there is a searchbar with placeholder text check if it is in the clickable elements first before returning search. If it is in clickable elements and you have not clicked it then click it before searching. Be aware that the placeholder text is the text in the searchbar. 
 For scrolling be aware you might want to scroll if there is information that you need that may be located more down.
