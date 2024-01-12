@@ -824,7 +824,7 @@ Clickable Elements: Here is a list of all clickable elements: {clickable_element
 Action Format:
 For clicks, you should this key value pair to the dict you will eventually return button: [item name]. Example: button: Submit
 For typing, you shoudl add this key value pair to the dict you will eventurally return return search: [search value]. Example: search: 240 dollars
-Note: Only interact with elements visible in the screenshot.
+Note: Only interact with elements visible in the screenshot. Be careful when searching values up. Sometimes you have to click in the element before searching something up. If there is a searchbar with placeholder text check if it is in the clickable elements first before returning search. If it is in clickable elements and  you have not clicked it then click it before searching.
 
 Past Interactions:
 Avoid repeating past actions. Here is a list of what you have previosly clicked along with reasoning for why you clicked each value: {past_context} for history.
@@ -878,7 +878,7 @@ Only return a dictionary and nothing else other than they keys mentioned above. 
             "content": [
                 {
                   "type": "text",
-           "text":  f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback. You will be returning a dict in the end so keep this in mind.
+           "text":   f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback. You will be returning a dict in the end so keep this in mind.
 
 Website Context
 Context: {website_context}
@@ -897,7 +897,7 @@ Clickable Elements: Here is a list of all clickable elements: {clickable_element
 Action Format:
 For clicks, you should this key value pair to the dict you will eventually return button: [item name]. Example: button: Submit
 For typing, you shoudl add this key value pair to the dict you will eventurally return return search: [search value]. Example: search: 240 dollars
-Note: Only interact with elements visible in the screenshot.
+Note: Only interact with elements visible in the screenshot. Be careful when searching values up. Sometimes you have to click in the element before searching something up. If there is a searchbar with placeholder text check if it is in the clickable elements first before returning search. If it is in clickable elements and  you have not clicked it then click it before searching.
 
 Past Interactions:
 Avoid repeating past actions. Here is a list of what you have previosly clicked along with reasoning for why you clicked each value: {past_context} for history.
@@ -958,7 +958,7 @@ Only return a dictionary and nothing else other than they keys mentioned above. 
             "content": [
            {
                 "type": "text",
-                  "text":   f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback. You will be returning a dict in the end so keep this in mind.
+                  "text":    f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback. You will be returning a dict in the end so keep this in mind.
 
 Website Context
 Context: {website_context}
@@ -977,7 +977,7 @@ Clickable Elements: Here is a list of all clickable elements: {clickable_element
 Action Format:
 For clicks, you should this key value pair to the dict you will eventually return button: [item name]. Example: button: Submit
 For typing, you shoudl add this key value pair to the dict you will eventurally return return search: [search value]. Example: search: 240 dollars
-Note: Only interact with elements visible in the screenshot.
+Note: Only interact with elements visible in the screenshot. Be careful when searching values up. Sometimes you have to click in the element before searching something up. If there is a searchbar with placeholder text check if it is in the clickable elements first before returning search. If it is in clickable elements and  you have not clicked it then click it before searching.
 
 Past Interactions:
 Avoid repeating past actions. Here is a list of what you have previosly clicked along with reasoning for why you clicked each value: {past_context} for history.
