@@ -857,7 +857,7 @@ Here is what you should return. You should return a dict with what you want to c
 Example return:
 button: Submit, feedback: your feedback here, reasoning: your reasoning here.
 These are the keys and values you should be returning the dictionary you are returning and only this. Do not add any extra keys to the anwser.
-Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary. The dictionary should have the keys button/search, feedback, and reasoning. Make sure you are return propery python dictionary.
+Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary. The dictionary should have the keys button/search, feedback, and reasoning. Make sure you are return a proper python dictionary. Use quotations in this dictionary
 """
                 },
                 {
@@ -878,7 +878,7 @@ Only return a dictionary and nothing else other than they keys mentioned above. 
             "content": [
                 {
                   "type": "text",
-           "text":   f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback. You will be returning a dict in the end so keep this in mind.
+           "text":  f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback. You will be returning a dict in the end so keep this in mind.
 
 Website Context
 Context: {website_context}
@@ -930,7 +930,7 @@ Here is what you should return. You should return a dict with what you want to c
 Example return:
 button: Submit, feedback: your feedback here, reasoning: your reasoning here.
 These are the keys and values you should be returning the dictionary you are returning and only this. Do not add any extra keys to the anwser.
-Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary. The dictionary should have the keys button/search, feedback, and reasoning. Make sure you are return propery python dictionary.
+Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary. The dictionary should have the keys button/search, feedback, and reasoning. Make sure you are return a proper python dictionary. Use quotations in this dictionary
 """
                 },
                 {
@@ -1010,7 +1010,7 @@ Here is what you should return. You should return a dict with what you want to c
 Example return:
 button: Submit, feedback: your feedback here, reasoning: your reasoning here.
 These are the keys and values you should be returning the dictionary you are returning and only this. Do not add any extra keys to the anwser.
-Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary. The dictionary should have the keys button/search, feedback, and reasoning. Make sure you are return propery python dictionary.
+Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary. The dictionary should have the keys button/search, feedback, and reasoning. Make sure you are return a proper python dictionary. Use quotations in this dictionary
 """
                 },
                 {
