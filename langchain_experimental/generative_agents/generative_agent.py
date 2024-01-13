@@ -811,10 +811,10 @@ Website Context
 Context: {website_context}
 \n
 Your Persona
-Here is a Summary of yourself including what you want out of the website: {summary}
+Here is a Summary of yourself: {summary}
 \n
 Task Information: 
-Here is the specific task you said you wanted to complete on this website: {user_contect}. Use this information to guide what you will do on the website. Your goal is to complete this task as quickly as possible. So efficiently navigate the website and choose what to do based on what will help you most efficiently reach your goal. Try to maximize your operations so that you are achieving your task in the beset way possible.
+Here is the specific task you said you wanted to complete on this website: {user_contect}. Use this information to guide what you will do on the website. Your goal is to complete this task as best as possible. So efficiently navigate the website and choose what to do based on what will help you most efficiently reach your goal and achieve the results you want. Try to maximize your operations so that you are achieving your task in the best way possible.
 
 Task Instructions:
 You are going to either choose if you want to click an element or search something up or scroll down, based on the elments in the screenshot.
@@ -826,7 +826,8 @@ For clicks, you should this key value pair to the dict you will eventually retur
 For typing, you should add this key value pair to the dict you will eventurally return return search: [placeholder text: search value]. Example: search: placeholder text: 240 dollars
 For scrolling down you will eventually return scroll: down. Example: scroll[down]
 Note: Only interact with elements visible in the screenshot. Be careful when searching values up. Sometimes you have to click in the element before searching something up. If there is a searchbar with placeholder text check if it is in the clickable elements first before returning search. If it is in clickable elements and you have not clicked it then click it before searching. Be aware that the placeholder text is the text in the searchbar. 
-For scrolling be aware you might want to scroll if there is information that you need that may be located more down.
+For scrolling be aware you might want to scroll if there is information that you need that may be located more down. Do not be afraid to scroll if some information you want is cut off or if you believe there is more relevant information if you scroll.
+You are trying to emulate a person so make your actions similair to how an actual person would navigate a website.
 
 Past Interactions:
 Avoid repeating past actions(except scrolling). Here is a list of what you have previosly clicked along with reasoning for why you clicked each value: {past_context} for history.
@@ -880,16 +881,16 @@ Only return a dictionary and nothing else other than they keys mentioned above. 
             "content": [
                 {
                   "type": "text",
-           "text":  f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback. You will be returning a dict in the end so keep this in mind.
+           "text":   f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback. You will be returning a dict in the end so keep this in mind.
 
 Website Context
 Context: {website_context}
 \n
 Your Persona
-Here is a Summary of yourself including what you want out of the website: {summary}
+Here is a Summary of yourself: {summary}
 \n
 Task Information: 
-Here is the specific task you said you wanted to complete on this website: {user_contect}. Use this information to guide what you will do on the website. Your goal is to complete this task as quickly as possible. So efficiently navigate the website and choose what to do based on what will help you most efficiently reach your goal. Try to maximize your operations so that you are achieving your task in the beset way possible.
+Here is the specific task you said you wanted to complete on this website: {user_contect}. Use this information to guide what you will do on the website. Your goal is to complete this task as best as possible. So efficiently navigate the website and choose what to do based on what will help you most efficiently reach your goal and achieve the results you want. Try to maximize your operations so that you are achieving your task in the best way possible.
 
 Task Instructions:
 You are going to either choose if you want to click an element or search something up or scroll down, based on the elments in the screenshot.
@@ -901,7 +902,8 @@ For clicks, you should this key value pair to the dict you will eventually retur
 For typing, you should add this key value pair to the dict you will eventurally return return search: [placeholder text: search value]. Example: search: placeholder text: 240 dollars
 For scrolling down you will eventually return scroll: down. Example: scroll[down]
 Note: Only interact with elements visible in the screenshot. Be careful when searching values up. Sometimes you have to click in the element before searching something up. If there is a searchbar with placeholder text check if it is in the clickable elements first before returning search. If it is in clickable elements and you have not clicked it then click it before searching. Be aware that the placeholder text is the text in the searchbar. 
-For scrolling be aware you might want to scroll if there is information that you need that may be located more down.
+For scrolling be aware you might want to scroll if there is information that you need that may be located more down. Do not be afraid to scroll if some information you want is cut off or if you believe there is more relevant information if you scroll.
+You are trying to emulate a person so make your actions similair to how an actual person would navigate a website.
 
 Past Interactions:
 Avoid repeating past actions(except scrolling). Here is a list of what you have previosly clicked along with reasoning for why you clicked each value: {past_context} for history.
@@ -962,16 +964,16 @@ Only return a dictionary and nothing else other than they keys mentioned above. 
             "content": [
            {
                 "type": "text",
-                  "text":    f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback. You will be returning a dict in the end so keep this in mind.
+                  "text":     f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback. You will be returning a dict in the end so keep this in mind.
 
 Website Context
 Context: {website_context}
 \n
 Your Persona
-Here is a Summary of yourself including what you want out of the website: {summary}
+Here is a Summary of yourself: {summary}
 \n
 Task Information: 
-Here is the specific task you said you wanted to complete on this website: {user_contect}. Use this information to guide what you will do on the website. Your goal is to complete this task as quickly as possible. So efficiently navigate the website and choose what to do based on what will help you most efficiently reach your goal. Try to maximize your operations so that you are achieving your task in the beset way possible.
+Here is the specific task you said you wanted to complete on this website: {user_contect}. Use this information to guide what you will do on the website. Your goal is to complete this task as best as possible. So efficiently navigate the website and choose what to do based on what will help you most efficiently reach your goal and achieve the results you want. Try to maximize your operations so that you are achieving your task in the best way possible.
 
 Task Instructions:
 You are going to either choose if you want to click an element or search something up or scroll down, based on the elments in the screenshot.
@@ -983,7 +985,8 @@ For clicks, you should this key value pair to the dict you will eventually retur
 For typing, you should add this key value pair to the dict you will eventurally return return search: [placeholder text: search value]. Example: search: placeholder text: 240 dollars
 For scrolling down you will eventually return scroll: down. Example: scroll[down]
 Note: Only interact with elements visible in the screenshot. Be careful when searching values up. Sometimes you have to click in the element before searching something up. If there is a searchbar with placeholder text check if it is in the clickable elements first before returning search. If it is in clickable elements and you have not clicked it then click it before searching. Be aware that the placeholder text is the text in the searchbar. 
-For scrolling be aware you might want to scroll if there is information that you need that may be located more down.
+For scrolling be aware you might want to scroll if there is information that you need that may be located more down. Do not be afraid to scroll if some information you want is cut off or if you believe there is more relevant information if you scroll.
+You are trying to emulate a person so make your actions similair to how an actual person would navigate a website.
 
 Past Interactions:
 Avoid repeating past actions(except scrolling). Here is a list of what you have previosly clicked along with reasoning for why you clicked each value: {past_context} for history.
