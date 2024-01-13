@@ -837,7 +837,7 @@ Focus on unique elements unless repetition is necessary. Use the past_context to
 Warnings:
 Be aware of popups. If you see a popup you will probably need to hit the button to exit or get out of the popup. Click the necessary element to keep progressing through the website. If you do not you will just be stuck on the popup.
 Popups:
-If you see a popup blocking content hit the neccesary button to continue from the popup. Interact with the popup as it will be the only way to continue. 
+If you see a popup blocking content hit the neccesary button to continue from the popup. Interact with the popup as it will be the only way to continue. You also cannot search things up when there is a popup. Keep this in mind. Popups black activity.
 
 Feedback Guidelines
 Provide specific and impactful feedback based on your interaction:
@@ -913,7 +913,7 @@ Focus on unique elements unless repetition is necessary. Use the past_context to
 Warnings:
 Be aware of popups. If you see a popup you will probably need to hit the button to exit or get out of the popup. Click the necessary element to keep progressing through the website. If you do not you will just be stuck on the popup.
 Popups:
-If you see a popup blocking content hit the neccesary button to continue from the popup. Interact with the popup as it will be the only way to continue. 
+If you see a popup blocking content hit the neccesary button to continue from the popup. Interact with the popup as it will be the only way to continue. You also cannot search things up when there is a popup. Keep this in mind. Popups black activity.
 
 Feedback Guidelines
 Provide specific and impactful feedback based on your interaction:
@@ -996,7 +996,7 @@ Focus on unique elements unless repetition is necessary. Use the past_context to
 Warnings:
 Be aware of popups. If you see a popup you will probably need to hit the button to exit or get out of the popup. Click the necessary element to keep progressing through the website. If you do not you will just be stuck on the popup.
 Popups:
-If you see a popup blocking content hit the neccesary button to continue from the popup. Interact with the popup as it will be the only way to continue. 
+If you see a popup blocking content hit the neccesary button to continue from the popup. Interact with the popup as it will be the only way to continue. You also cannot search things up when there is a popup. Keep this in mind. Popups black activity.
 
 Feedback Guidelines
 Provide specific and impactful feedback based on your interaction:
