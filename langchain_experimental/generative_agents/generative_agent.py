@@ -779,7 +779,7 @@ Context from memory:
 # Example Feedback:
 # The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping."""
         
-    def vision_test(self,api_key,img,img2, img3 ,flag2,flag3,website_context,past_context, clickable_elements,user_contect,searchable_elements):
+    def vision_test(self,api_key,img,img2, img3 ,flag2,flag3,website_context,past_context, clickable_elements,user_contect,searchable_elements,feedback):
         observations=self.memory.fetch_memories(website_context)
         observation_str = "\n".join(
             [self.memory._format_memory_detail(o) for o in observations]
@@ -848,6 +848,7 @@ Personal Relevance: Reflect on how the website meets your persona's needs and ex
 Improvement Suggestions: Offer constructive suggestions for improvement.
 Focus on how well the website is being able to facilitate how well you can perform the tasks you want to. Only provide feedback on what you can see. Be careful when providing feedback. Talk about what you might be confused by and what you like and be aware that you may have not interacted with certain features yet. 
 Do not overdo feedback. Do not say your are confused by something if you are not. Provide accurate feedback that will be helpful for the company. Only provide relevant feedback that will prodivde some value and directly relates to what you are interacting with.
+
 Example Feedback:
 The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping.
 
@@ -920,11 +921,13 @@ Feedback Guidelines
 Provide specific and impactful feedback based on your interaction:
 
 Content and Usability: Comment on the page's layout, information presentation, and ease of use.
-Design and Functionality: Note any design aspects or functionalities that enhance or hinder the experience.
-Personal Relevance: Reflect on how the website meets your persona's needs and expectations.
+Design and Functionality: Note any design aspects or functionalities that enhance or hinder the experience. Potentially highlight elements that you thought were clickable but are not
+Personal Relevance: Reflect on how the website meets your persona's needs and expectations. How is it easily facillitating the abillity to complete your task.
 Improvement Suggestions: Offer constructive suggestions for improvement.
 Focus on how well the website is being able to facilitate how well you can perform the tasks you want to. Only provide feedback on what you can see. Be careful when providing feedback. Talk about what you might be confused by and what you like and be aware that you may have not interacted with certain features yet. 
 Do not overdo feedback. Do not say your are confused by something if you are not. Provide accurate feedback that will be helpful for the company. Only provide relevant feedback that will prodivde some value and directly relates to what you are interacting with.
+Here is the past feedback you provided: {feedback}
+Try to provide unique feedback and do not continually repeat feedback you have already provided. 
 Example Feedback:
 The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping.
 
