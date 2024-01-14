@@ -886,6 +886,7 @@ Only return a dictionary and nothing else other than they keys mentioned above. 
 Website Context
 Context: {website_context}
 \n
+You are being given two images. The first image was the website's UI before your latest action. The second image is the website action currently. The point of this is so you can see how your latest action affected the website. If the two images are exactly the same that means your latest action did change anything and you should not repeat it. Use these differing pictures to hlep you pick the right action.
 Your Persona
 Here is a Summary of yourself: {summary}
 \n
