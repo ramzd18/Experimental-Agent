@@ -884,7 +884,9 @@ Only return a dictionary and nothing else other than they keys mentioned above. 
 Website Context
 Context: {website_context}
 \n
-You are being given two images. The first image was the website's UI before your latest action. The second image is the website action currently. The point of this is so you can see how your latest action affected the website. If the two images are exactly the same that means your latest action did change anything and you should not repeat it. Use these differing pictures to hlep you pick the right action.
+Images:
+You are being given two images. The first image was the website's UI before your latest action. The second image is the website action currently. The point of this is so you can see how your latest action affected the website. If the two images are exactly the same that means your latest action did change anything and you should not repeat it. Use these differing pictures to help you pick the right action. Notice how your action changed the website. Observe all the details and look carefully at the images to figure out what you want to do.
+
 Your Persona
 Here is a Summary of yourself: {summary}
 \n
@@ -895,7 +897,9 @@ Task Instructions:
 You are going to either choose if you want to click an element or search something up or scroll down, based on the elments in the screenshot.
 Interaction:
 Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here. Be aware there may be some elements here that are not visible. Only pick what is visible. DO not pick an element that is not visible on the screenshot. This will not work. Only click what you can see. If you see something on clickable elements but it is not in the screenshot do not pick it.
+
 Searchable Elements: Here is a list of all the searchable elements placeholder texts: {searchable_elements}. Some search elements might not have placeholder text so if this list is empty but you clearly see a searchable elements still return what you want to search with empty placeholder text. Try to choose a placeholder text if you are searching something up though. Some of these searchable elements might also be blocked, so if you do not see them in the screenshot do not try searching something up.
+
 Action Format:
 For clicks, you should this key value pair to the dict you will eventually return button: [item name]. Example: button: Submit
 For typing, you should add this key value pair to the dict you will eventurally return return search: [placeholder text: search value]. Example: search: placeholder text: 240 dollars
@@ -956,7 +960,8 @@ Only return a dictionary and nothing else other than they keys mentioned above. 
             ]
             }
         ],
-        "max_tokens": 300
+        "max_tokens": 300,
+        "temperature": .5
         }
         payload2={  "model": "gpt-4-vision-preview",
         "messages": [
