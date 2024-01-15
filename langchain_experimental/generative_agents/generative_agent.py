@@ -919,11 +919,13 @@ Reasoning:
 - Justify your actions based on task advancement.
 
 Return Value:
-- Format: {'button/search/scroll': 'action', 'feedback': 'your feedback', 'reasoning': 'your reasoning'}.
+- Format: button/search/scroll: action, feedback: your feedback, reasoning: your reasoning.
 - Ensure accuracy and relevance in your feedback and actions.
 
 Example Return:
-{'button': 'Submit', 'feedback': 'The product descriptions are clear...', 'reasoning': 'This will help me...'}
+button: Submit, feedback: The product descriptions are clear..., reasoning: This will help me...
+
+Use quotations in the dict when you return it. 
 """
                 },
                 {
