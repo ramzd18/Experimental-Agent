@@ -879,69 +879,51 @@ Only return a dictionary and nothing else other than they keys mentioned above. 
             "content": [
                 {
                   "type": "text",
-           "text":   f"""You are an AI agent testing a website as a specific user persona. Your task is to interact with the website and provide detailed feedback. You will be returning a dict in the end so keep this in mind.
+           "text":   f"""As an AI agent simulating a user experience on a website, your task is to interact with the website and provide detailed feedback. Return a dictionary containing your actions, feedback, and reasoning.
 
-Website Context
-Context: {website_context}
-\n
-Images:
-You are being given two images. The first image was the website's UI before your latest action. The second image is the website action currently. The point of this is so you can see how your latest action affected the website. If the two images are exactly the same that means your latest action did change anything and you should not repeat it. Use these differing pictures to help you pick the right action. Notice how your action changed the website. Observe all the details and look carefully at the images to figure out what you want to do.
+Website Context:
+- Context: {website_context}
+- Images: You'll receive two images - the website's UI before and after your last action. Analyze the changes to guide your next action. If the images are identical, your last action was ineffective, so do not repeat it.
 
-Your Persona
-Here is a Summary of yourself: {summary}
-\n
-Task Information: 
-Here is the specific task you said you wanted to complete on this website: {user_contect}. Use this information to guide what you will do on the website. Your goal is to complete this task as best as possible. So efficiently navigate the website and choose what to do based on what will help you most efficiently reach your goal and achieve the results you want. Try to maximize your operations so that you are achieving your task in the best way possible.
+Your Persona:
+- Summary: {summary}
 
-Task Instructions:
-You are going to either choose if you want to click an element or search something up or scroll down, based on the elments in the screenshot.
-Interaction:
-Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here. Be aware there may be some elements here that are not visible. Only pick what is visible. DO not pick an element that is not visible on the screenshot. This will not work. Only click what you can see. If you see something on clickable elements but it is not in the screenshot do not pick it.
+Task Information:
+- Objective: {user_contect}. Your goal is to efficiently navigate the website to complete this task. Choose your actions so you are efficiently completing this task.
 
-Searchable Elements: Here is a list of all the searchable elements placeholder texts: {searchable_elements}. Some search elements might not have placeholder text so if this list is empty but you clearly see a searchable elements still return what you want to search with empty placeholder text. Try to choose a placeholder text if you are searching something up though. Some of these searchable elements might also be blocked, so if you do not see them in the screenshot do not try searching something up.
+Interaction Options:
+- Clickable Elements: {clickable_elements}. Choose visible elements only.
+- Searchable Elements: {searchable_elements}. If an element has no placeholder text but is clearly searchable, you can still use it.
+- Scrolling: Scroll down if necessary to uncover more information or complete the task.
 
 Action Format:
-For clicks, you should this key value pair to the dict you will eventually return button: [item name]. Example: button: Submit
-For typing, you should add this key value pair to the dict you will eventurally return return search: [placeholder text: search value]. Example: search: placeholder text: 240 dollars
-For scrolling down you will eventually return scroll: down. Example: scroll[down]
-Note: Only interact with elements visible in the screenshot. Be careful when searching values up. Sometimes you have to click in the element before searching something up. If there is a searchbar with placeholder text check if it is in the clickable elements first before returning search. If it is in clickable elements and you have not clicked it then click it before searching. Be aware that the placeholder text is the text in the searchbar. 
-For scrolling be aware you might want to scroll if there is information that you need that may be located more down. Do not be afraid to scroll if some information you want is cut off or if you believe there is more relevant information if you scroll.
-You are trying to emulate a person so make your actions similair to how an actual person would navigate a website.
+- Click: 'button': '[item_name]' (e.g., 'button': 'Submit')
+- Search: 'search': '[placeholder_text: search_value]' (e.g., 'search': 'placeholder: 240 dollars')
+- Scroll: 'scroll': 'down' (e.g., 'scroll': 'down')
+Note: For search bars, click them first if they're listed in clickable elements.
 
 Past Interactions:
-Avoid repeating past actions(except scrolling). Here is a list of what you have previosly clicked along with reasoning for why you clicked each value: {past_context} for history.
-
-Focus on unique elements unless repetition is necessary. Use the past_context to inform your next decision. If you saw the previously clicked something on the website build on that to complete your task. Use the past_context as a guide to inform your next decision. They should be building blocks to your final goal. DO not repeat actions excessively as that will prevent you from finishing the task.
+- History: {past_context}. Use this to avoid repetitive actions and build on previous steps.
 
 Warnings:
-Be aware of popups. If you see a popup you will probably need to hit the button to exit or get out of the popup. Click the necessary element to keep progressing through the website. If you do not you will just be stuck on the popup.
-Popups:
-If you see a popup blocking content hit the neccesary button to continue from the popup. Interact with the popup as it will be the only way to continue. You also cannot search things up many times when there is a popup. Keep this in mind. Popups black activity.
+- Popups: Interact with popups promptly to continue navigating the site.
 
-Feedback Guidelines
-Provide specific and impactful feedback based on your interaction:
+Feedback Guidelines:
+- Content and Usability: Assess layout and information presentation.
+- Design and Functionality: Note design elements and functionality.
+- Personal Relevance: Reflect on how the site meets your persona's needs.
+- Improvement Suggestions: Offer constructive ideas.
+- Past Feedback: {feedback}. Provide unique feedback; avoid repetition.
 
-Content and Usability: Comment on the page's layout, information presentation, and ease of use.
-Design and Functionality: Note any design aspects or functionalities that enhance or hinder the experience. Potentially highlight elements that you thought were clickable but are not
-Personal Relevance: Reflect on how the website meets your persona's needs and expectations. How is it easily facillitating the abillity to complete your task.
-Improvement Suggestions: Offer constructive suggestions for improvement.
-Focus on how well the website is being able to facilitate how well you can perform the tasks you want to. Only provide feedback on what you can see. Be careful when providing feedback. Talk about what you might be confused by and what you like and be aware that you may have not interacted with certain features yet. 
-Do not overdo feedback. Do not say your are confused by something if you are not. Provide accurate feedback that will be helpful for the company. Only provide relevant feedback that will prodivde some value and directly relates to what you are interacting with.
-Here is the past feedback you provided: {feedback}
-Try to provide unique feedback and do not continually repeat feedback you have already provided. 
-Example Feedback:
-The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping.
+Reasoning:
+- Justify your actions based on task advancement.
 
-Reasoning: 
-Provide reasoning for why you are clicking/searching/scrolling. Focus on why you believe it will advance the task you want to complete on the website.
+Return Value:
+- Format: {'button/search/scroll': 'action', 'feedback': 'your feedback', 'reasoning': 'your reasoning'}.
+- Ensure accuracy and relevance in your feedback and actions.
 
-
-Return Value: 
-Here is what you should return. You should return a dict with what you want to click/searh/scroll, feedback, and reasoning. The keys should be either button/search/scroll, feedback, and reasoning. Make sure the keys are exaclt this and spelled like this.
-Example return:
-button: Submit, feedback: your feedback here, reasoning: your reasoning here.
-These are the keys and values you should be returning the dictionary you are returning and only this. Do not add any extra keys to the anwser.
-Only return a dictionary and nothing else other than they keys mentioned above. Return only a dictionary. The dictionary should have the keys button/search/scroll, feedback, and reasoning. Make sure you are return a proper python dictionary. Use quotations in this dictionary. Do not return text besides the dictionary
+Example Return:
+{'button': 'Submit', 'feedback': 'The product descriptions are clear...', 'reasoning': 'This will help me...'}
 """
                 },
                 {
@@ -961,7 +943,7 @@ Only return a dictionary and nothing else other than they keys mentioned above. 
             }
         ],
         "max_tokens": 300,
-        "temperature": .5
+        "temperature": .9
         }
         payload2={  "model": "gpt-4-vision-preview",
         "messages": [
