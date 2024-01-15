@@ -925,7 +925,7 @@ Return Value:
 Example Return:
 button: Submit, feedback: The product descriptions are clear..., reasoning: This will help me...
 
-Use quotations in the dict when you return it. Return only the python dict and nothing else and make sure it is a dict.
+Use double quotations in the dict when you return it. Return only the python dict and nothing else and make sure it is a dict.
 """
                 },
                 {
