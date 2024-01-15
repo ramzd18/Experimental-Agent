@@ -945,7 +945,7 @@ Use double quotations in the dict when you return it. Return only the python dic
             }
         ],
         "max_tokens": 300,
-        "temperature": .9
+        "temperature": .1
         }
         payload2={  "model": "gpt-4-vision-preview",
         "messages": [
