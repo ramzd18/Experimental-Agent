@@ -814,8 +814,8 @@ Task Information:
 - Objective: {user_contect}. Your goal is to efficiently navigate the website to complete this task. Choose your actions so you are efficiently completing this task.
 
 Interaction Options:
-- Clickable Elements: {clickable_elements}. Choose visible elements only.
-- Searchable Elements: {searchable_elements}. If an element has no placeholder text but is clearly searchable, you can still use it.
+- Clickable Elements: {clickable_elements}. If you want to click something you must choose an element within here. It must be in this list. Do not choose your own element.
+- Searchable Elements: {searchable_elements}. If you want to search something you must choose an element with placeholder text in here. Do not choose your own element.
 - Scrolling: Scroll down if necessary to uncover more information or complete the task.
 
 Action Format:
