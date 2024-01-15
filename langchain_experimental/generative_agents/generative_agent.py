@@ -825,7 +825,7 @@ Action Format:
 Note: For search bars, click them first if they're listed in clickable elements.
 
 Past Interactions:
-- History: {past_context}. Use this to avoid repetitive actions and build on previous steps.
+- History: {past_context}. Use this to avoid repetitive actions and build on previous steps. If you see you are doing the same action repeadetly do not choose that action again. Your goal is to finish your task as quick as possible and that will prevent you from doing it.
 
 Warnings:
 - Popups: Interact with popups promptly to continue navigating the site.
@@ -853,7 +853,9 @@ Use double quotations in the dict when you return it. Return only the python dic
                 {
                 "type": "image_url",
                 "image_url": {
-                    "url": f"data:image/jpeg;base64,{img}"
+                    "url": f"data:image/jpeg;base64,{img}",
+                    "detail": "high"
+
                 }
                 }
             ]
@@ -892,7 +894,7 @@ Action Format:
 Note: For search bars, click them first if they're listed in clickable elements.
 
 Past Interactions:
-- History: {past_context}. Use this to avoid repetitive actions and build on previous steps.
+- History: {past_context}. Use this to avoid repetitive actions and build on previous steps. If you see you are doing the same action repeadetly do not choose that action again. Your goal is to finish your task as quick as possible and that will prevent you from doing it.
 
 Warnings:
 - Popups: Interact with popups promptly to continue navigating the site.
