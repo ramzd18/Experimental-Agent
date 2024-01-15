@@ -784,12 +784,9 @@ Context from memory:
         observation_str = "\n".join(
             [self.memory._format_memory_detail(o) for o in observations]
         )
-        print("Length of observations"+str(len(observation_str)))
-        print("Length of observations"+str(len(self.get_summary())))
+
 
         summary=str(self.get_summary())
-        print(len(summary))
-        print(summary)
         client = OpenAI(
         api_key=api_key)
         headers = {
@@ -898,7 +895,7 @@ Task Instructions:
 You are going to either choose if you want to click an element or search something up or scroll down, based on the elments in the screenshot.
 Interaction:
 Clickable Elements: Here is a list of all clickable elements: {clickable_elements}, If you want to click something choose something from here. Be aware there may be some elements here that are not visible. Only pick what is visible. DO not pick an element that is not visible on the screenshot. This will not work. Only click what you can see. If you see something on clickable elements but it is not in the screenshot do not pick it.
-Searchable Elements: Here is a list of all the searchable elements placeholder texts: {searchable_elements}. Some search elements might not have placeholder text so if this list is empty but you clearly see a searchable elements still return what you want to search with empty placeholder text. Try to choose a placeholder text if you are searching something up though.
+Searchable Elements: Here is a list of all the searchable elements placeholder texts: {searchable_elements}. Some search elements might not have placeholder text so if this list is empty but you clearly see a searchable elements still return what you want to search with empty placeholder text. Try to choose a placeholder text if you are searching something up though. Some of these searchable elements might also be blocked, so if you do not see them in the screenshot do not try searching something up.
 Action Format:
 For clicks, you should this key value pair to the dict you will eventually return button: [item name]. Example: button: Submit
 For typing, you should add this key value pair to the dict you will eventurally return return search: [placeholder text: search value]. Example: search: placeholder text: 240 dollars
@@ -915,7 +912,7 @@ Focus on unique elements unless repetition is necessary. Use the past_context to
 Warnings:
 Be aware of popups. If you see a popup you will probably need to hit the button to exit or get out of the popup. Click the necessary element to keep progressing through the website. If you do not you will just be stuck on the popup.
 Popups:
-If you see a popup blocking content hit the neccesary button to continue from the popup. Interact with the popup as it will be the only way to continue. You also cannot search things up when there is a popup. Keep this in mind. Popups black activity.
+If you see a popup blocking content hit the neccesary button to continue from the popup. Interact with the popup as it will be the only way to continue. You also cannot search things up many times when there is a popup. Keep this in mind. Popups black activity.
 
 Feedback Guidelines
 Provide specific and impactful feedback based on your interaction:
