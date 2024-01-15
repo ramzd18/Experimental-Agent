@@ -815,12 +815,12 @@ Task Information:
 
 Interaction Options:
 - Clickable Elements: {clickable_elements}. If you want to click something you must choose an element within here. It must be in this list. Do not choose your own element.
-- Searchable Elements: {searchable_elements}. If you want to search something you must choose an element with placeholder text in here. Do not choose your own element.
+- Searchable Elements: {searchable_elements}. If you want to search something you must choose an element with its placeholder text in here. Do not choose your own element.
 - Scrolling: Scroll down if necessary to uncover more information or complete the task.
 
 Action Format:
 - Click: 'button': '[item_name]' (e.g., 'button': 'Submit')
-- Search: 'search': '[placeholder_text: search_value]' (e.g., 'search': 'placeholder: 240 dollars')
+- Search: 'search': '[placeholder_text: search_value]' (e.g., 'search': 'Cost: 240 dollars')
 - Scroll: 'scroll': 'down' (e.g., 'scroll': 'down')
 Note: For search bars, click them first if they're listed in clickable elements.
 
