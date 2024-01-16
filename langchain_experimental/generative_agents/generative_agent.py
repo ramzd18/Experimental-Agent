@@ -841,11 +841,14 @@ Reasoning:
 - Justify your actions based on task advancement.
 
 Return Value:
-- Format: button/search/scroll: value, feedback: your feedback, reasoning: your reasoning.
+You are going to return the three most likely things you want to do followed by your feedback and reasoning.
+- Format: button/search/scroll: value, button/search/scroll: value, button/search/scroll: value, feedback: your feedback, reasoning: your reasoning.
 - Ensure accuracy and relevance in your feedback and actions.
 
 Example Return:
-button: Submit, feedback: The product descriptions are clear..., reasoning: This will help me...
+button: Submit, scroll: down, search: Cost: 240,  feedback: The product descriptions are clear..., reasoning: This will help me...
+
+You are essentially returning your top three potential actions you would take on the website followed by your feedback and reasoning. If you can think of three actions you can return 1 or 2. 
 
 Use double quotations in the dict when you return it. Return only the python dict and nothing else and make sure it is a dict. They only keys in this dict should be button/search/scroll, feedback, and reasoning.
 """
