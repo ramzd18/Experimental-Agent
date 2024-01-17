@@ -875,7 +875,7 @@ Use double quotations in the dict when you return it. Return only the python dic
             ]
             }
         ],
-        "max_tokens": 300
+        "max_tokens": 400
         }
         payload1={  "model": "gpt-4-vision-preview",
         "messages": [
