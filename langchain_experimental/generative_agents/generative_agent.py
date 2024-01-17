@@ -778,7 +778,12 @@ Context from memory:
 # Focus on how well the website is being able to facilitate how well you can perform the tasks you want to.
 # Example Feedback:
 # The product descriptions are clear and give me a general idea of what to expect. However it would be nice to have some sort of reviews also displayed so I can understand pros and cons of each product beforehand. It would help me pick better products and facillitate better shopping."""
-        
+#  Feedback Guidelines:
+# - Content and Usability: Assess layout and information presentation.
+# - Design and Functionality: Note design elements and functionality.
+# - Personal Relevance: Reflect on how the site meets your persona's needs
+# - Improvement Suggestions: Offer constructive ideas.
+# - Past Feedback: {feedback}. Provide unique feedback; avoid repetition.       
     def vision_test(self,api_key,img,img2, img3 ,flag2,flag3,website_context,past_context, clickable_elements,user_contect,searchable_elements,feedback):
         observations=self.memory.fetch_memories(website_context)
         observation_str = "\n".join(
@@ -811,7 +816,7 @@ Your Persona:
 - Summary: {summary}
 
 Task Information:
-- Objective: {user_contect}. Your goal is to efficiently navigate the website to complete this task. Choose your actions so you are efficiently completing this task.
+- Objective: {user_contect}. Your goal is to efficiently navigate the website to complete this task. Choose your actions so you are efficiently completing this task. You should try completing your task as quickly as possible and avoid doing repetitive actions or actions that will not serve yuor goal.
 
 Interaction Options:
 - Clickable Elements: {clickable_elements}. If you want to click something you must choose an element within here. It must be in this list. Do not choose your own element. Return it exactly as it appears on this list. Do not return something that is not exactly on this list if you are clicking something.
@@ -831,11 +836,17 @@ Warnings:
 - Popups: Interact with popups promptly to continue navigating the site.
 
 Feedback Guidelines:
-- Content and Usability: Assess layout and information presentation.
-- Design and Functionality: Note design elements and functionality.
-- Personal Relevance: Reflect on how the site meets your persona's needs.
-- Improvement Suggestions: Offer constructive ideas.
-- Past Feedback: {feedback}. Provide unique feedback; avoid repetition.
+Content and Usability: Evaluate the website's layout and information presentation. How easy is it to navigate? Are there areas where the information flow feels interrupted or confusing?
+
+Design and Functionality: Examine design elements (color scheme, font choice, imagery) and functionality. How do these elements contribute to or detract from your overall experience? Compare this with your experience on similar websites.
+
+Personal Relevance: Reflect on how the site meets your specific needs based on your persona. In what scenarios would you use this website, and how does it support these uses?
+
+Improvement Suggestions: Offer detailed constructive ideas for improvement. For each suggestion, explain why you think this change would enhance the website.
+
+Past Feedback Review: Here is your past feedback: {feedback}. Building on previous feedback, provide unique insights. Focus on areas not previously covered, or offer a new perspective on past feedback.
+
+Emotional Response: Describe your emotional response to navigating the website. Which elements make you feel engaged, confused, or frustrated?
 
 Reasoning:
 - Justify your actions based on task advancement.
